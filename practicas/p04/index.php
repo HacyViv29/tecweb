@@ -96,7 +96,8 @@
         echo '$b = '.$b;
 
         echo '<p><b>$c = $b*10;</b></p>';
-        $c = intval($b)*10; 
+        //$c = intval($b)*10; 
+        @$c = $b*10;
         echo '$c = '.$c;
 
         echo '<p><b>$a .= $b;</b></p>';
@@ -104,8 +105,9 @@
         echo '$a = '.$a;
 
         echo '<p><b>$b *= $c;</b></p>';
-        settype($b, "int");
-        $b *= $c;
+        //settype($b, "int");
+        //$b *= $c;
+        @$b *= $c;
         echo '$b = '.$b;
 
         echo '<p><b>$z[0] = “MySQL”</b>;</p>';
@@ -203,6 +205,18 @@
     echo '<br>';
 
     unset($a, $b, $c, $d, $e, $f);
+    ?>
+
+<h2>Ejercicio 7</h2>
+    <p>Usando la variable predefinida $_SERVER, determina lo siguiente:</p>
+    <p>a. La versión de Apache y PHP<br>
+    b. El nombre del sistema operativo (servidor)<br>
+    c. El idioma del navegador (cliente).</p>
+    <?php
+    echo 'Version de Apache y PHP: <b>'.$_SERVER['SERVER_SOFTWARE'].'</b><br>';
+    //echo 'Nombre del sistema operativo: <b>'.$_SERVER['SERVER_NAME'].'</b><br>';
+    echo 'Nombre del sistema operativo: <b>'.PHP_OS.'</b><br>';
+    echo 'Idioma del navehador: <b>'.$_SERVER['HTTP_ACCEPT_LANGUAGE'].'</b><br>';
     ?>
 </body>
 </html>
