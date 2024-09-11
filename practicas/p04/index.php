@@ -66,7 +66,7 @@
         echo '$c = '.$c;
 
         echo '<p>d. Describe en y muestra en la página obtenida qué ocurrió en el segundo bloque de
-    asignaciones</p>';
+        asignaciones</p>';
 
         echo '<h4>Respuesta:</h4>';
         echo '<ul>';
@@ -78,8 +78,8 @@
         ?>
 
     <h2>Ejercicio 3</h2>
-        <p>Muestra el contenido de cada variable inmediatamente después de cada asignación,
-        verificar la evolución del tipo de estas variables (imprime todos los componentes de los
+        <p>Muestra el contenido de cada variable inmediatamente después de cada asignación,<br>
+        verificar la evolución del tipo de estas variables (imprime todos los componentes de los<br>
         arreglo):</p>
         <?php
         echo '<p><b>$a = “PHP5”;</b></p>';
@@ -112,6 +112,23 @@
         $z[0] = "MySQL";
         echo '$z = ';
         print_r($z);
+        ?>
+
+<h2>Ejercicio 4</h2>
+        <p>Lee y muestra los valores de las variables del ejercicio anterior, pero ahora con la ayuda de<br>
+        la matriz $GLOBALS o del modificador global de PHP.</p>
+        <?php
+        echo '<b>$a = </b>'.$GLOBALS['a'].'<br>';
+
+        echo '<b>$z = </b>';
+        print_r($GLOBALS['z']);
+        echo '<br>';
+
+        echo '<b>$b = </b>'.$GLOBALS['b'].'<br>';
+
+        echo '<b>$c = </b>'.$GLOBALS['c'].'<br>';
+
+        unset($a, $z, $b, $c);
         ?>
 </body>
 </html>
