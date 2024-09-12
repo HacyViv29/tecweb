@@ -18,56 +18,62 @@
     
     <form action="http://52.43.117.247/neo/classroom/tw/concurso.php" method="post">
     <fieldset>
-    <legend><b><p>Información del Participante</p></b></legend>
+      <legend><b><p>Información del Participante</p></b></legend>
 
-    <ul>
-      <li>Nombre:<input type="text" name="name"></li>
-      <li>Dirección de E-mail:<input type="email" name="email"></li>
-      <li>Número Telefónico:<input type="phone" name="phone"></li>
-      <li>Mis tenis son tan feos porque...<br>
-      <textarea name="story" rows="4" cols="60" maxlength="300"
-      placeholder="No más de 300 caracteres de longitud."></textarea></li>
-    </ul>
+      <ul>
+        <li>Nombre:<input type="text" name="name"></li>
+        <li>Dirección de E-mail:<input type="email" name="email"></li>
+        <li>Número Telefónico:<input type="phone" name="phone"></li>
+        <li>Mis tenis son tan feos porque...<br>
+        <textarea name="story" rows="4" cols="60" maxlength="300"
+        placeholder="No más de 300 caracteres de longitud."></textarea></li>
+      </ul>
     </fieldset>
 
     <h2>Diseña tus Mike personalizados:</h2>
 
-    <legend><b><p>Diseño personalizado del Tenis</p></b></legend>
+    <fieldset>
+      <legend><b><p>Diseño personalizado del Tenis</p></b></legend>
 
-    <legend><b><p>Color <em>(escoge uno)</em>:</p></b></legend>
-    <ul>
-      <li><input type="radio" name="color" value="red">Rojo</li>
-      <li><input type="radio" name="color" value="blue">Azul</li>
-      <li><input type="radio" name="color" value="dark">Negro</li>
-      <li><input type="radio" name="color" value="silver">Plateado</li>
-      </ul>
-
-      <legend><b><p>Características <em>(escoge tantas como quieras)</em>:</p></b></legend>
-      <ul>
-      <li><input type="checkbox" name="features[]" value="shiny strings">Cordones brillantes</li>
-      <li><input type="checkbox" name="features[]" value="metal logo" checked>Logo metálico</li>
-      <li><input type="checkbox" name="features[]" value="luminous sole">Suela luminosa</li>
-      <li><input type="checkbox" name="features[]" value="integrated wifi">WiFi integrado</li>
-      </ul>
-
-      <legend><b><p>Talla</p></b></legend>
-    <p>Las medidas reflejan el estándar masculino:
-    <select name="size" id="size">
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-      <option value="11">11</option>
-    </select></p>
+      <fieldset>
+        <legend><b><p>Color <em>(escoge uno)</em>:</p></b></legend>
+        <ul>
+        <li><input type="radio" name="color" value="red">Rojo</li>
+        <li><input type="radio" name="color" value="blue">Azul</li>
+        <li><input type="radio" name="color" value="dark">Negro</li>
+        <li><input type="radio" name="color" value="silver">Plateado</li>
+        </ul>
+      </fieldset>
     
+      <fieldset>
+        <legend><b><p>Características <em>(escoge tantas como quieras)</em>:</p></b></legend>
+        <ul>
+        <li><input type="checkbox" name="features[]" value="shiny strings">Cordones brillantes</li>
+        <li><input type="checkbox" name="features[]" value="metal logo" checked>Logo metálico</li>
+        <li><input type="checkbox" name="features[]" value="luminous sole">Suela luminosa</li>
+        <li><input type="checkbox" name="features[]" value="integrated wifi">WiFi integrado</li>
+        </ul>
+      </fieldset>
+
+      <fieldset>
+        <legend><b><p>Talla</p></b></legend>
+        <p>Las medidas reflejan el estándar masculino:
+        <select name="size" id="size">
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        </select></p>
+      </fieldset>
+    </fieldset>
 
     <p><button type="submit">¡Chidos mis Tenis!</button>
-      <input type="reset"></p>
-      </form>
-
+    <input type="reset"></p>
+    </form>
   </body>
 </html>
