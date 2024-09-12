@@ -23,7 +23,7 @@
     <ul>
       <li>Nombre:<input type="text" name="name"></li>
       <li>Dirección de E-mail:<input type="email" name="email"></li>
-      <li>Número Telefónico:<input type="number" name="phone"></li>
+      <li>Número Telefónico:<input type="phone" name="phone"></li>
       <li>Mis tenis son tan feos porque...<br>
       <textarea name="story" rows="4" cols="60" maxlength="300"
       placeholder="No más de 300 caracteres de longitud."></textarea></li>
@@ -35,19 +35,19 @@
     <p>Diseño personalizado del Tenis</p>
 
     <p>Color <em>(escoge uno)</em>:</p>
-      <ul>
-      <li>Rojo</li>
-      <li>Azul</li>
-      <li>Negro</li>
-      <li>Plateado</li>
+    <ul>
+      <li><input type="radio" name="color" value="red">Rojo</li>
+      <li><input type="radio" name="color" value="blue">Azul</li>
+      <li><input type="radio" name="color" value="dark">Negro</li>
+      <li><input type="radio" name="color" value="silver">Plateado</li>
       </ul>
 
     <p>Características <em>(escoge tantas como quieras)</em>:</p>
       <ul>
-      <li>Cordones brillantes</li>
-      <li>Logo metálico</li>
-      <li>Suela luminosa</li>
-      <li>WiFi integrado</li>
+      <li><input type="checkbox" name="features[]" value="shiny strings">Cordones brillantes</li>
+      <li><input type="checkbox" name="features[]" value="metak logo" checked>Logo metálico</li>
+      <li><input type="checkbox" name="features[]" value="luminous sole">Suela luminosa</li>
+      <li><input type="checkbox" name="features[]" value="integrated wifi">WiFi integrado</li>
       </ul>
 
     <p>Talla</p>
