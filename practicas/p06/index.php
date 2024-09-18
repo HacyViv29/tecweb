@@ -32,5 +32,25 @@
     <?php
         ejer2();
     ?>
+
+    <h2>Ejercicio 3</h2>
+    <p>Utiliza un ciclo while para encontrar el primer número entero obtenido aleatoriamente,
+    pero que además sea múltiplo de un número dado.<br>
+    -Crear una variante de este script utilizando el ciclo do-while.<br>
+    -El número dado se debe obtener vía GET.</p>
+    <?php
+        if(isset($_GET['numero'])){
+            $num = $_GET['numero'];
+            if($num > 0){
+                ejer3($num);
+            }
+            else{
+                echo '<h3>R= Introduce un numero mayor que 0, por favor.</h3>';
+            }
+        }
+        else{
+            echo '<h3>R= No se encontró numero en la URL.</h3>';
+        }
+    ?>
 </body>
 </html>

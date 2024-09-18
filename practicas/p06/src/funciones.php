@@ -54,4 +54,23 @@
         echo '<h3>R= '.$totalnum.' números obtenidos en '.$iteraciones.' iteraciones.</h3>';
 
     }
+
+    //Ejercicio 3
+    /*Utiliza un ciclo while para encontrar el primer número entero obtenido aleatoriamente,
+    pero que además sea múltiplo de un número dado.
+    -Crear una variante de este script utilizando el ciclo do-while.
+    -El número dado se debe obtener vía GET.*/
+    function ejer3($num){
+        $encontrado = false;
+        $contador = 0;
+        while(!$encontrado){
+            $numal = rand(1,100);
+            $contador++;
+
+            if($numal % $num == 0){
+                $encontrado = true;
+            }
+        }
+        echo '<h3>R= El primer multiplo de '.$num.' es '.$numal.'</h3>';
+    }
 ?>
