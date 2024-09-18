@@ -43,6 +43,7 @@
             $num = $_GET['numero'];
             if($num > 0){
                 ejer3($num);
+                ejer3_dowhile($num);
             }
             else{
                 echo '<h3>R= Introduce un numero mayor que 0, por favor.</h3>';

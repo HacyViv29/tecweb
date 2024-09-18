@@ -64,13 +64,22 @@
         $encontrado = false;
         $contador = 0;
         while(!$encontrado){
-            $numal = rand(1,100);
+            $numal = rand(1,999);
             $contador++;
 
             if($numal % $num == 0){
                 $encontrado = true;
             }
         }
-        echo '<h3>R= El primer multiplo de '.$num.' es '.$numal.'</h3>';
+        echo '<h3>R= El primer multiplo de '.$num.' es '.$numal.'. Obtenido con '.$contador.' iteraciones.</h3>';
+    }
+
+    function ejer3_dowhile($num){
+        $contador = 0;
+        do{
+            $numal = rand(1,999);
+            $contador++;
+        }while($numal % $num != 0);
+        echo '<h3>R= El primer multiplo de '.$num.' es '.$numal.'. Obtenido con '.$contador.' iteraciones.</h3>';
     }
 ?>
