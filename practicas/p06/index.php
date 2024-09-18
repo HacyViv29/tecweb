@@ -20,7 +20,17 @@
         else{
             echo '<h3>R= No se encontró numero en la URL.</h3>';
         }
+        unset($num);
     ?>
 
+    <h2>Ejercicio 2</h2>
+    <p>Crea un programa para la generación repetitiva de 3 números aleatorios hasta obtener una<br> 
+    secuencia compuesta por: impar, par, impar<br>
+    Estos números deben almacenarse en una matriz de Mx3, donde M es el número de filas y<br>
+    3 el número de columnas. Al final muestra el número de iteraciones y la cantidad de<br>
+    números generados</p>
+    <?php
+        ejer2();
+    ?>
 </body>
 </html>
