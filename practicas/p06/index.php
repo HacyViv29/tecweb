@@ -6,7 +6,6 @@
     <title>Práctica 6</title>
 </head>
 <body>
-    
     <?php
         include 'src/funciones.php';
     ?>
@@ -16,8 +15,11 @@
         if(isset($_GET['numero']))
         {
             $num = $_GET['numero'];
+            ejer1($num);
         }
-        ejer1($num);
+        else{
+            echo '<h3>R= No se encontró numero en la URL.</h3>';
+        }
     ?>
 
 </body>
