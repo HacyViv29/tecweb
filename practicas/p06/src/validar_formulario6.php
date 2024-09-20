@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php
-    include 'parque_vehicular.php';  // Incluir el archivo con el arreglo
+    include 'vehiculos.php';  // Incluir el archivo con el arreglo
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['matricula'])) {
