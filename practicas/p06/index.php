@@ -54,12 +54,39 @@
         }
     ?>
 
-<h2>Ejercicio 4</h2>
+    <h2>Ejercicio 4</h2>
     <p>Crear un arreglo cuyos índices van de 97 a 122 y cuyos valores son las letras de la ‘a’<br>
     a la ‘z’. Usa la función chr(n) que devuelve el caracter cuyo código ASCII es n para poner<br>
     el valor en cada índice..</p>
     <?php
         ejer4();
+    ?>
+
+    <h2>Ejercicio 5</h2>
+    <p>Usar las variables $edad y $sexo en una instrucción if para identificar una persona de<br>
+    sexo “femenino”, cuya edad oscile entre los 18 y 35 años y mostrar un mensaje de<br>
+    bienvenida apropiado.</p>
+    <?php
+        echo '<a href="formulario_5.html">Acceso al formulario para identificar una persona</a>';
+    ?>
+
+    <h2>Ejercicio 6</h2>
+    <p>Crea en código duro un arreglo asociativo que sirva para registrar el parque vehicular de<br>
+    una ciudad. Cada vehículo debe ser identificado por:<br><pre>
+        •Matricula<br>
+        • Auto<br>
+            o Marca<br>
+            o Modelo (año)<br>
+            o Tipo (sedan|hachback|camioneta)<br>
+        • Propietario<br>
+            o Nombre<br>
+            o Ciudad<br>
+            o Dirección
+    </pre>
+    La matrícula debe tener el siguiente formato LLLNNNN, donde las L pueden ser letras de<br>
+    la A-Z y las N pueden ser números de 0-9.</p>
+    <?php
+        echo '<a href="formulario_6.html">Acceso al formulario para buscar el vehiculo.</a>';
     ?>
 </body>
 </html>

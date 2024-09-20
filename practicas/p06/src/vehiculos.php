@@ -1,5 +1,5 @@
 <?php
-    $parque_vehicular = array(
+    $vehiculos = array(
         "ABC0123" => array(
             "Auto" => array(
                 "marca" => "HONDA",

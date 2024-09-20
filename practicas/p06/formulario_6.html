@@ -1,21 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de vehiculos</title>
 </head>
 <body>
-    <h1>Consulta de Parque Vehicular</h1>
+    <h1>Ejercicio 6</h1>
+    <p>Crea en código duro un arreglo asociativo que sirva para registrar el parque vehicular de<br>
+    una ciudad. Cada vehículo debe ser identificado por:<br><pre>
+        •Matricula<br>
+        • Auto<br>
+            o Marca<br>
+            o Modelo (año)<br>
+            o Tipo (sedan|hachback|camioneta)<br>
+        • Propietario<br>
+            o Nombre<br>
+            o Ciudad<br>
+            o Dirección
+    </pre>
+    La matrícula debe tener el siguiente formato LLLNNNN, donde las L pueden ser letras de<br>
+    la A-Z y las N pueden ser números de 0-9.</p>
+    
+    <h2>Consulta de Vehiculos</h2>
 
-    <!-- Formulario para buscar por matrícula -->
     <form action="src/validar_formulario6.php" method="POST">
         <label for="matricula">Ingrese matrícula del vehículo:</label>
         <input type="text" id="matricula" name="matricula" required><br><br>
         <input type="submit" value="Buscar Vehículo">
     </form>
 
-    <!-- Formulario para mostrar todos los vehículos -->
     <form action="src/validar_formulario6.php" method="POST">
         <input type="hidden" name="mostrar_todos" value="true">
         <input type="submit" value="Mostrar Todos los Vehículos">
