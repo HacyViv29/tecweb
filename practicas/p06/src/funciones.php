@@ -40,14 +40,14 @@
         }
         $totalnum = $iteraciones*3;
 
-        echo "<h3>Matriz generada:</h3>";
+        echo '<h3>Matriz generada:</h3>';
         echo "<table border='1'>";
             foreach ($matriz as $fila) {
-                echo "<tr>";
+                echo '<tr>';
                 foreach ($fila as $num) {
-                    echo "<td>$num</td>";
+                    echo '<td>'.$num.'</td>';
                 }
-                echo "</tr>";
+                echo '</tr>';
             }
         echo "</table>";
 
@@ -81,5 +81,30 @@
             $contador++;
         }while($numal % $num != 0);
         echo '<h3>R= El primer multiplo de '.$num.' es '.$numal.'. Obtenido con '.$contador.' iteraciones.</h3>';
+    }
+
+    //Ejercicio 4
+    /*Crear un arreglo cuyos índices van de 97 a 122 y cuyos valores son las letras de la ‘a’
+    a la ‘z’. Usa la función chr(n) que devuelve el caracter cuyo código ASCII es n para poner
+    el valor en cada índice. */
+    function ejer4(){
+        $arreglo = [];
+
+        for($i = 97; $i<123; $i++){
+            $arreglo[$i] = chr($i);
+        }
+
+        echo '<h3>Tabla generada<h3>';
+        echo "<table border='1'>";
+        echo '<tr><th>Índice</th><th>Letra</th></tr>';
+
+        foreach($arreglo as $num => $valor){
+            echo '<tr>';
+            echo '<td>['.$num.']</td>';
+            echo '<td>'.$valor.'</td>';
+            echo '</tr>';
+        }
+
+        echo "</table>";
     }
 ?>
