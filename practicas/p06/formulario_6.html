@@ -6,6 +6,21 @@
     <title>Consulta de vehiculos</title>
 </head>
 <body>
-    
+    <h1>Consulta de Parque Vehicular</h1>
+
+    <!-- Formulario para buscar por matrícula -->
+    <form action="src/validar_formulario6.php" method="POST">
+        <label for="matricula">Ingrese matrícula del vehículo:</label>
+        <input type="text" id="matricula" name="matricula" required><br><br>
+        <input type="submit" value="Buscar Vehículo">
+    </form>
+
+    <!-- Formulario para mostrar todos los vehículos -->
+    <form action="src/validar_formulario6.php" method="POST">
+        <input type="hidden" name="mostrar_todos" value="true">
+        <input type="submit" value="Mostrar Todos los Vehículos">
+    </form>
+</body>
+</html>
 </body>
 </html>
