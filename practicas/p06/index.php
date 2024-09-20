@@ -42,7 +42,10 @@
         if(isset($_GET['numero'])){
             $num = $_GET['numero'];
             if($num > 0){
+                echo '<h4>Ejercicio hecho con while:</h4>';
                 ejer3($num);
+                
+                echo '<h4>Ejercicio hecho con do-while:</h4>';
                 ejer3_dowhile($num);
             }
             else{
