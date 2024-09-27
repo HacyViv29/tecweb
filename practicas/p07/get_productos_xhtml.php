@@ -2,44 +2,55 @@
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
 	<?php
-	$data = array();
-
+    $data = array();
     if(isset($_GET['tope']))
 		$tope = $_GET['tope'];
 
-        if (!empty($tope))
+    if (!is_numeric($tope)) {
+        die('El parámetro "tope" debe ser un número.');
+    } else {
+        die('Parámetro "tope" no detectado...');
+    }
+
+    if (!empty($tope))
+    {
+        /** SE CREA EL OBJETO DE CONEXION */
+        @$link = new mysqli('localhost', 'root', 'Buap123', 'marketzone');
+        /** NOTA: con @ se suprime el Warning para gestionar el error por medio de código */
+    
+        /** comprobar la conexión */
+        if ($link->connect_errno) 
         {
-            /** SE CREA EL OBJETO DE CONEXION */
-            @$link = new mysqli('localhost', 'root', 'Buap123', 'marketzone');
-            /** NOTA: con @ se suprime el Warning para gestionar el error por medio de código */
-    
-            /** comprobar la conexión */
-            if ($link->connect_errno) 
-            {
-                die('Falló la conexión: '.$link->connect_error.'<br/>');
-                //exit();
-            }
-    
-            /** Crear una tabla que no devuelve un conjunto de resultados */
-            if ( $result = $link->query("SELECT * FROM productos WHERE unidades <= $tope") ) 
-            {
-                /** Se extraen las tuplas obtenidas de la consulta */
-                $row = $result->fetch_all(MYSQLI_ASSOC);
-    
-            }
-    
-            $link->close();
-    
-            /** Se devuelven los datos en formato JSON */
-            echo json_encode($data, JSON_PRETTY_PRINT);
+            die('Falló la conexión: '.$link->connect_error.'<br/>');
+            //exit();
         }
-        ?>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Producto</title>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	</head>
-	<body>
+    
+        /** Crear una tabla que no devuelve un conjunto de resultados */
+        /*$data = [];
+        if ( $result = $link->query("SELECT * FROM productos WHERE unidades <= $tope") ) 
+        {
+            while ($row = $result->fetch_all(MYSQLI_ASSOC)){
+                $data[] = $row;
+            }
+            $result->free();
+        }*/
+        if ($result = $link->query("SELECT * FROM productos WHERE unidades <= $tope")) {
+            /** Se extraen las tuplas obtenidas de la consulta */
+            $data = $result->fetch_all(MYSQLI_ASSOC);
+        }
+    
+        $link->close();
+    
+        /** Se devuelven los datos en formato JSON */
+        echo json_encode($data, JSON_PRETTY_PRINT);
+    }
+    ?>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Producto</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
     <h3>PRODUCTO</h3>
 
 <br/>
@@ -62,7 +73,7 @@
         <tbody>
             <?php foreach ($data as $index => $row) : ?>
             <tr>
-                <th scope="row"><?= $row[$id] ?></th>
+                <th scope="row"><?= $index+1 ?></th>
                 <td><?= $row['nombre'] ?></td>
                 <td><?= $row['marca'] ?></td>
                 <td><?= $row['modelo'] ?></td>
