@@ -38,9 +38,6 @@
         }
     
         $link->close();
-    
-        /** Se devuelven los datos en formato JSON */
-        echo json_encode($data, JSON_PRETTY_PRINT);
     }
     ?>
 <head>
