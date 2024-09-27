@@ -8,9 +8,7 @@
 
     if (!is_numeric($tope)) {
         die('El parámetro "tope" debe ser un número.');
-    } else {
-        die('Parámetro "tope" no detectado...');
-    }
+    } 
 
     if (!empty($tope))
     {
