@@ -1,4 +1,4 @@
-<!DOCTYPE html public "-//W3C//DTD XHTML 1.1//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
 <head>
@@ -33,9 +33,9 @@
 
     <h2>Ejercicio 2</h2>
         <p>Proporcionar los valores de $a, $b, $c como sigue:</p>
-        <p>$a = “ManejadorSQL”;<br>
-        $b = 'MySQL’;<br>
-        $c = &$a;</p>
+        <p>$a = “ManejadorSQL”;<br/>
+        $b = 'MySQL’;<br/>
+        $c = &amp;$a;</p>
         <?php
         $a = "ManejadorSQL";
         $b = 'MySQL';
@@ -78,8 +78,8 @@
         ?>
 
     <h2>Ejercicio 3</h2>
-        <p>Muestra el contenido de cada variable inmediatamente después de cada asignación,<br>
-        verificar la evolución del tipo de estas variables (imprime todos los componentes de los<br>
+        <p>Muestra el contenido de cada variable inmediatamente después de cada asignación,<br/>
+        verificar la evolución del tipo de estas variables (imprime todos los componentes de los<br/>
         arreglo):</p>
         <?php
         echo '<p><b>$a = “PHP5”;</b></p>';
@@ -117,7 +117,7 @@
         ?>
 
 <h2>Ejercicio 4</h2>
-        <p>Lee y muestra los valores de las variables del ejercicio anterior, pero ahora con la ayuda de<br>
+        <p>Lee y muestra los valores de las variables del ejercicio anterior, pero ahora con la ayuda de<br/>
         la matriz $GLOBALS o del modificador global de PHP.</p>
         <?php
         echo '<b>$a = </b>'.$GLOBALS['a'].'<br>';
@@ -135,9 +135,9 @@
 
 <h2>Ejercicio 5</h2>
     <p>Dar el valor de las variables $a, $b, $c al final del siguiente script:</p>
-    <p>$a = “7 personas”;<br>
-    $b = (integer) $a;<br>
-    $a = “9E3”;<br>
+    <p>$a = “7 personas”;<br/>
+    $b = (integer) $a;<br/>
+    $a = “9E3”;<br/>
     $c = (double) $a;</p>
     <?php
     $a = "7 personas";
@@ -154,12 +154,12 @@
 
 <h2>Ejercicio 6</h2>
     <p>Dar y comprobar el valor booleano de las variables $a, $b, $c, $d, $e y $f y muéstralas
-    usando la función var_dump(<datos>).</p>
-    <p>$a = “0”;<br>
-    $b = “TRUE”;<br>
-    $c = FALSE;<br>
-    $d = ($a OR $b);<br>
-    $e = ($a AND $c);<br>
+    usando la función var_dump("datos").</p>
+    <p>$a = “0”;<br/>
+    $b = “TRUE”;<br/>
+    $c = FALSE;<br/>
+    $d = ($a OR $b);<br/>
+    $e = ($a AND $c);<br/>
     $f = ($a XOR $b);</p>
     <?php
     $a = "0";
@@ -209,8 +209,8 @@
 
 <h2>Ejercicio 7</h2>
     <p>Usando la variable predefinida $_SERVER, determina lo siguiente:</p>
-    <p>a. La versión de Apache y PHP<br>
-    b. El nombre del sistema operativo (servidor)<br>
+    <p>a. La versión de Apache y PHP<br/>
+    b. El nombre del sistema operativo (servidor)<br/>
     c. El idioma del navegador (cliente).</p>
     <?php
     echo 'Version de Apache y PHP: <b>'.$_SERVER['SERVER_SOFTWARE'].'</b><br>';
@@ -218,5 +218,10 @@
     echo 'Nombre del sistema operativo: <b>'.PHP_OS.'</b><br>';
     echo 'Idioma del navehador: <b>'.$_SERVER['HTTP_ACCEPT_LANGUAGE'].'</b><br>';
     ?>
+    
+    <p>
+        <a href="https://validator.w3.org/markup/check?uri=referer"><img
+        src="https://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1" height="31" width="88" /></a>
+    </p>
 </body>
 </html>
