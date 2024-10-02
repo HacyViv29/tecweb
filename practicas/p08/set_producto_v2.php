@@ -18,14 +18,18 @@ if ($link->connect_errno)
 }
 
 /** Crear una tabla que no devuelve un conjunto de resultados */
+$sql_check = "SELECT * FROM productos WHERE nombre = '$nombre' AND modelo = '$modelo' AND  marca = '$marca'";
 $sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}')";
-if ( $link->query($sql) ) 
-{
-    echo 'Producto insertado con ID: '.$link->insert_id;
-}
+$result_check = $link->query($sql_check);
+
+if ($result_check->num_rows == 0)
+    if ( $link->query($sql) ) 
+    {
+        echo 'Producto insertado con ID: '.$link->insert_id;
+    }
 else
 {
-	echo 'El Producto no pudo ser insertado =(';
+	echo 'El Producto no se puede insertar, ya que es un producto repetido.<br>';
 }
 
 $link->close();
