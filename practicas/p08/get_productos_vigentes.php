@@ -65,7 +65,7 @@
 <?php else : ?>
 
 <script>
-alert('No hay productos que tengan esa cantidad de producto.');
+alert('No hay productos que no esten eliminados.');
 </script>
 
 <?php endif; ?>
