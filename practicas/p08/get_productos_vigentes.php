@@ -12,33 +12,24 @@
 <br/>
 <?php
     $data = array();
-    if(isset($_GET['tope']))
-		$tope = $_GET['tope'];
 
-    if (!is_numeric($tope)) {
-        die('El parámetro "tope" debe ser un número.');
-    } 
-
-    if (!empty($tope))
+    /** SE CREA EL OBJETO DE CONEXION */
+    @$link = new mysqli('localhost', 'root', 'Buap123', 'marketzone');
+    /** NOTA: con @ se suprime el Warning para gestionar el error por medio de código */
+    
+    /** comprobar la conexión */
+    if ($link->connect_errno) 
     {
-        /** SE CREA EL OBJETO DE CONEXION */
-        @$link = new mysqli('localhost', 'root', 'Buap123', 'marketzone');
-        /** NOTA: con @ se suprime el Warning para gestionar el error por medio de código */
-    
-        /** comprobar la conexión */
-        if ($link->connect_errno) 
-        {
-            die('Falló la conexión: '.$link->connect_error.'<br/>');
-            //exit();
-        }
-    
-        if ($result = $link->query("SELECT * FROM productos WHERE unidades <= $tope")) {
-            /** Se extraen las tuplas obtenidas de la consulta */
-            $data = $result->fetch_all(MYSQLI_ASSOC);
-        }
-    
-        $link->close();
+        die('Falló la conexión: '.$link->connect_error.'<br/>');
+        //exit();
     }
+    
+    if ($result = $link->query("SELECT * FROM productos WHERE eliminado = 0")) {
+        /** Se extraen las tuplas obtenidas de la consulta */
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    $link->close();
     ?>
     <?php if( isset($data) ) : ?>
 
