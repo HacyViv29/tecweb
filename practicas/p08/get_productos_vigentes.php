@@ -27,7 +27,7 @@
             //exit();
         }
     
-        if ($result = $link->query("SELECT * FROM productos WHERE eliminado == $eliminado")) {
+        if ($result = $link->query("SELECT * FROM productos WHERE eliminado = $eliminado")) {
             /** Se extraen las tuplas obtenidas de la consulta */
             $data = $result->fetch_all(MYSQLI_ASSOC);
         }
