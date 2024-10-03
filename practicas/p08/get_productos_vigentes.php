@@ -12,14 +12,9 @@
 <br/>
 <?php
     $data = array();
-    if(isset($_GET['tope']))
-		$tope = $_GET['tope'];
+	$eliminado = 0;
 
-    if (!is_numeric($tope)) {
-        die('El parámetro "tope" debe ser un número.');
-    } 
-
-    if (!empty($tope))
+    if (!empty($eliminado))
     {
         /** SE CREA EL OBJETO DE CONEXION */
         @$link = new mysqli('localhost', 'root', 'Buap123', 'marketzone');
@@ -32,7 +27,7 @@
             //exit();
         }
     
-        if ($result = $link->query("SELECT * FROM productos WHERE unidades <= $tope")) {
+        if ($result = $link->query("SELECT * FROM productos WHERE eliminado == $eliminado")) {
             /** Se extraen las tuplas obtenidas de la consulta */
             $data = $result->fetch_all(MYSQLI_ASSOC);
         }
@@ -74,7 +69,7 @@
 <?php else : ?>
 
 <script>
-alert('No hay productos que tengan esa cantidad de producto.');
+alert('No hay productos que no esten eliminados.');
 </script>
 
 <?php endif; ?>
