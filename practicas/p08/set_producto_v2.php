@@ -22,15 +22,29 @@ $sql_check = "SELECT * FROM productos WHERE nombre = '$nombre' AND modelo = '$mo
 $sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}')";
 $result_check = $link->query($sql_check);
 
-if ($result_check->num_rows == 0){
-    if ( $link->query($sql) ) 
-    {
-        echo 'Producto insertado con ID: '.$link->insert_id;
+if($nombre =! "Nombre_producto")
+    if ($result_check->num_rows == 0){
+        if ( $link->query($sql) ) 
+        {
+            echo 'Producto insertado con ID: '.$link->insert_id;
+
+            echo '<br><br><h1>Resumen del producto insertado: </h1><br><br>';
+            echo '<li>ID del Producto: '.$link->insert_id.'</li><br>';
+            echo '<li>Nombre del Producto: '.$nombre.'</li><br>';
+            echo '<li>Marca del Producto: '.$marca.'</li><br>';
+            echo '<li>Modelo del Producto: '.$modelo.'</li><br>';
+            echo '<li>Precio del Producto: $'.$precio.'</li><br>';
+            echo '<li>Detalles del Producto: '.$detalles.'</li><br>';
+            echo '<li>Unidades del Producto: '.$unidades.'</li><br>';
+            echo '<li>URL de la imagen del Producto: '.$imagen.'</li><br>';
+        }
     }
-}
-else
-{
-	echo 'El Producto no se puede insertar, ya que es un producto repetido.<br>';
+    else
+    {
+        echo 'El Producto no se puede insertar, ya que es un producto repetido.<br>';
+    }
+else{
+    echo 'No se puede realizar una inserción, ya que se quedo vacio.<br>';
 }
 
 $link->close();
