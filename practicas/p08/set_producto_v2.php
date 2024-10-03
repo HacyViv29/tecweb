@@ -19,7 +19,10 @@ if ($link->connect_errno)
 
 /** Crear una tabla que no devuelve un conjunto de resultados */
 $sql_check = "SELECT * FROM productos WHERE nombre = '$nombre' AND modelo = '$modelo' AND  marca = '$marca'";
-$sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}',0)";
+//Original
+//$sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}',0)";
+//Modificado
+$sql = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen) VALUES ('{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}')";
 $result_check = $link->query($sql_check);
 
 if ($result_check->num_rows == 0){
