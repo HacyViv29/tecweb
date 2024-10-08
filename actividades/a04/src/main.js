@@ -139,3 +139,14 @@ function ejemplo9(){
             break;
     }
 }
+
+function ejemplo10(){
+    var x;
+    x=1;
+    
+    while (x<=100) {
+        document.write(x);
+        document.write('<br>');
+        x=x+1;
+    }
+}
