@@ -191,3 +191,12 @@ function ejemplo13(){
         document.write(f+" ");
     }
 }
+
+function ejemplo14(){
+    document.write("Cuidado<br>");
+    document.write("Ingresa tu documento correctamente<br>");
+    document.write("Cuidado<br>");
+    document.write("Ingresa tu documento correctamente<br>");
+    document.write("Cuidado<br>");
+    document.write("Ingresa tu documento correctamente<br>");
+}
