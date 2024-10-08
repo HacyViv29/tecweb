@@ -10,5 +10,5 @@ function getDatos(){
 }
 
 function ejemplo1(){
-    
+    document.write('Hola Mundo');
 }
