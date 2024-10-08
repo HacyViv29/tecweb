@@ -26,3 +26,15 @@ function ejemplo2(){
     document.write('<br>');
     document.write(casado);
 }
+
+function ejemplo3(){
+    var nombre;
+    var edad;
+    nombre = prompt('Ingresa tu nombre:', '');
+    edad = prompt('Ingresa tu edad:', '');
+    document.write('Hola ');
+    document.write(nombre);
+    document.write(' así que tienes ');
+    document.write(edad);
+    document.write(' años');
+}
