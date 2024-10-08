@@ -183,3 +183,11 @@ function ejemplo12(){
         document.write('<br>');
     }while(valor!=0);
 }
+
+function ejemplo13(){
+    var f;
+    for(f=1; f<=10; f++)
+    {
+        document.write(f+" ");
+    }
+}
