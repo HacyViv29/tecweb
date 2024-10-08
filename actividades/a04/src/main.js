@@ -200,3 +200,14 @@ function ejemplo14(){
     document.write("Cuidado<br>");
     document.write("Ingresa tu documento correctamente<br>");
 }
+
+function ejemplo15(){
+    function mostrarMensaje() {
+        document.write("Cuidado<br>");
+        document.write("Ingresa tu documento correctamente<br>");
+    
+    }
+    mostrarMensaje();
+    mostrarMensaje();
+    mostrarMensaje();
+}
