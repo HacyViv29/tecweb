@@ -4,27 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Productos</title>
+    <script src="src/main.js"></script>
 </head>
 <body>
-    <h1>Registro de productos</h1>
+    <h1>Registro de computadoras</h1>
 
-    <p>Rellena los campos con la información del producto que se desea agregar a la base de datos.</p>
+    <p>Rellena los campos con la información del equipo.</p>
 
     <form id="formularioProductos" action="set_producto_v2.php" method="post">
 
     <h2>Información del producto</h2>
 
     <fieldset>
-        <legend>Producto</legend>
+        <legend>Computadora</legend>
 
         <ul>
-            <li><label for="form-nombre">Nombre del producto:</label> <input type="text" name="nombre" id="form-nombre" placeholder="Nombre" required></li><br/>
-            <li><label for="form-marca">Marca del producto:</label> <input type="text" name="marca" id="form-marca" placeholder="Marca" required></li><br/>
-            <li><label for="form-modelo">Modelo del producto:</label> <input type="text" name="modelo" id="form-modelo" placeholder="Modelo" required></li><br/>
-            <li><label for="form-precio">Precio del producto: </label><span>$</span> <input type="number" name="precio" id="form-precio"placeholder="Precio" step="0.01" min="0" required></li><br/>
-            <li><label for="form-detalles">Detalles del producto</label><br><textarea name="detalles" rows="4" cols="60" id="form-detalles" placeholder="Descripción de no más de 60 caracteres de longitud" required></textarea></li><br/>
-            <li><label for="form-unidades">Unidades de producto:</label> <input type="number" name="unidades" id="form-unidades" placeholder="Unidades" required></li><br/>
-            <li><label for="form-imagen">URL de imagen del producto:</label> <input type="text" name="imagen" id="form-imagen" placeholder="URL imagen" required></li><br/>
+            <li><label for="form-nombre">Nombre del equipo:</label> <input type="text" name="nombre" id="form-nombre" placeholder="Nombre" onblur="verifNombre();"></li><br/>
+            
+            <li><label for="form-marca">Marca del equipo:</label> 
+                <select id="form-marca" name="marca" onblur="verifMarca();">
+                    <option value="">Selecciona una marca</option>
+                    <option value="HP">HP</option>
+                    <option value="Asus">Asus</option>
+                    <option value="Acer">Acer</option>
+                    <option value="Huawei">Huawei</option>
+                </select>
+            </li><br/>
+            
+            <li><label for="form-modelo">Modelo del equipo:</label> <input type="text" name="modelo" id="form-modelo" placeholder="Modelo" onblur="verifModelo();"></li><br/>
+            
+            <li><label for="form-precio">Precio del equipo: </label><span>$</span> <input type="number" name="precio" id="form-precio"placeholder="Precio" step="0.01" onblur="verifPrecio();"></li><br/>
+            
+            <li><label for="form-detalles">Detalles del equipo</label><br><textarea name="detalles" rows="4" cols="60" id="form-detalles" placeholder="Descripción de no más de 250 caracteres de longitud" onblur="verifDetalles();"></textarea></li><br/>
+            
+            <li><label for="form-unidades">Unidades de equipo:</label> <input type="number" name="unidades" id="form-unidades" placeholder="Unidades" onblur="verifUnidades();"></li><br/>
+            
+            <li><label for="form-imagen">URL de imagen del equipo:</label> <input type="text" name="imagen" id="form-imagen" placeholder="URL imagen" onfocus="limpiar(this)" onblur="verifImagen();"></li><br/>
         </ul>
     </fieldset>
 
