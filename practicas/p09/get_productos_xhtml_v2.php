@@ -53,6 +53,7 @@
         <th scope="col">Unidades</th>
         <th scope="col">Detalles</th>
         <th scope="col">Imagen</th>
+        <th scope="col">Opciones</th>
         </tr>
     </thead>
     <tbody>
@@ -66,6 +67,7 @@
             <td><?= $row['unidades'] ?></td>
             <td><?= utf8_encode($row['detalles']) ?></td>
             <td><img src=<?= $row['imagen'] ?> ></td>
+            <td><input type="button" value="modificar"  onclick="" /></td>
         </tr>
         <?php endforeach; ?>
     </tbody>
