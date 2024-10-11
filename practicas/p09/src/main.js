@@ -234,7 +234,7 @@ function send2form() {
     console.log(form);
 
     form.method = 'POST';
-    form.action = 'formulario_productos_v2.html';  
+    form.action = '../formulario_productos_v2.html';  
 
     document.body.appendChild(form);
     form.submit();
