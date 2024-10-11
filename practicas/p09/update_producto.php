@@ -9,7 +9,7 @@
     $imagen   = $_POST['imagen'];
 
     /* MySQL Conexion*/
-    $link = mysqli_connect("localhost", "root", "Buap123", "demoDB");
+    $link = mysqli_connect("localhost", "root", "Buap123", "marketzone");
 
     // Chequea coneccion
     if($link === false){
