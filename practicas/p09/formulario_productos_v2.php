@@ -19,6 +19,8 @@
         <legend>Computadora</legend>
 
         <ul>
+            <input type="hidden" name="id" value="<?= isset($_POST['id']) ? htmlspecialchars($_POST['id']) : '' ?>" />
+            
             <li><label for="form-nombre">Nombre del equipo:</label> <input type="text" name="nombre" id="form-nombre" placeholder="Nombre" value="<?= isset($_POST['nombre']) ? htmlspecialchars($_POST['nombre']) : '' ?>" onblur="verifNombre();"></li><br/>
             
             <li><label for="form-marca">Marca del equipo:</label> 

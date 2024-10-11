@@ -179,6 +179,7 @@ function send2form() {
     y que pertenecen a la clase "row-data".
      */
 
+    var id = data[0].innerHTML;
     var nombre = data[1].innerHTML;
     var marca = data[2].innerHTML;
     var modelo = data[3].innerHTML;
@@ -188,6 +189,12 @@ function send2form() {
     var imagen = data[7].firstChild.getAttribute('src');
     
     var form = document.createElement("form");
+
+    var idIn = document.createElement("input");
+    idIn.type = 'number';
+    idIn.name = 'id';
+    idIn.value = id;
+    form.appendChild(idIn);
 
     var nombreIn = document.createElement("input");
     nombreIn.type = 'text';
