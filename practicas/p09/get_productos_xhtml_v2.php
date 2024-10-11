@@ -58,7 +58,7 @@
     </thead>
     <tbody>
         <?php foreach ($data as $index => $row) : ?>
-        <tr>
+        <tr id="row-<?= $index ?>">
             <th scope="row"><?= $index+1 ?></th>
             <td><?= $row['nombre'] ?></td>
             <td><?= $row['marca'] ?></td>
@@ -67,7 +67,7 @@
             <td><?= $row['unidades'] ?></td>
             <td><?= utf8_encode($row['detalles']) ?></td>
             <td><img src=<?= $row['imagen'] ?> ></td>
-            <td><input type="button" value="modificar"  onclick="" /></td>
+            <td><input type="button" value="modificar"  onclick="send2form();" /></td>
         </tr>
         <?php endforeach; ?>
     </tbody>

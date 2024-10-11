@@ -51,7 +51,7 @@
         </thead>
         <tbody>
             <?php foreach ($data as $index => $row) : ?>
-            <tr>
+            <tr id="row-<?= $index ?>">
                 <th scope="row"><?= $index+1 ?></th>
                 <td><?=$row['id']?></td>
                 <td><?= $row['nombre'] ?></td>
