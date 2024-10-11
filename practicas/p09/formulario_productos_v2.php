@@ -11,7 +11,7 @@
 
     <p>Actualiza la información del equipo en el campo correspondiente.</p>
 
-    <form id="formularioProductos" action="get_productos_vigentes_v2.php" method="post" onsubmit="return verifFinal();">
+    <form id="formularioProductos" action="update_producto.php" method="post" onsubmit="return verifFinal();">
 
     <h2>Información del producto</h2>
 
