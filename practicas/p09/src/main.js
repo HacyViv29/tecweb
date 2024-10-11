@@ -38,7 +38,7 @@ function verifModelo(){
         final = false;
     }
     else{
-        if(!/^[A-Za-z0-9]+$/.test(modelo)){
+        if(!/^[A-Za-z0-9 ]+$/.test(modelo)){
             alert('El modelo debe de estar escrito en formato alfanumerico.');
             final = false;
         }
