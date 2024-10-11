@@ -183,8 +183,8 @@ function send2form() {
     var marca = data[2].innerHTML;
     var modelo = data[3].innerHTML;
     var precio= data[4].innerHTML;
-    var detalles = data[5].innerHTML;
-    var unidades = data[6].innerHTML;
+    var unidades = data[5].innerHTML;
+    var detalles = data[6].innerHTML;
     var imagen = data[7].firstChild.getAttribute('src');
     
     var form = document.createElement("form");

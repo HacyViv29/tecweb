@@ -33,7 +33,7 @@
             
             <li><label for="form-modelo">Modelo del equipo:</label> <input type="text" name="modelo" id="form-modelo" placeholder="Modelo"  value="<?= isset($_POST['modelo']) ? htmlspecialchars($_POST['modelo']) : '' ?>" onblur="verifModelo();"></li><br/>
             
-            <li><label for="form-precio">Precio del equipo: </label><span>$</span> <input type="number" name="precio" id="form-precio"placeholder="Precio" step="0.01" value="<?= isset($_POST['modelo']) ? htmlspecialchars($_POST['modelo']) : '' ?>" onblur="verifPrecio();"></li><br/>
+            <li><label for="form-precio">Precio del equipo: </label><span>$</span> <input type="number" name="precio" id="form-precio"placeholder="Precio" step="0.01" value="<?= isset($_POST['precio']) ? htmlspecialchars($_POST['precio']) : '' ?>" onblur="verifPrecio();"></li><br/>
             
             <li><label for="form-detalles">Detalles del equipo</label><br><textarea name="detalles" rows="4" cols="60" id="form-detalles" placeholder="Descripción de no más de 250 caracteres de longitud" onblur="verifDetalles();"><?= isset($_POST['detalles']) ? htmlspecialchars($_POST['detalles']) : '' ?></textarea></li><br/>
             
