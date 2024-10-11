@@ -31,9 +31,9 @@
 <h2>Elige una opción para continuar:</h2>
 <p style="display: flex; gap: 10px;">
     <form action="get_productos_vigentes_v2.php" method="get">
-        <input type="submit" value="Regresar a Productos Vigentes" />
+        <label>Opción 1: </label><input type="submit" value="Regresar a Productos Vigentes" />
     </form>
     <form action="get_productos_xhtml_v2.php" method="get">
-        <input type="submit" value="Regresar a Productos por tope" />
+        <label>Opción 2: </label><input type="submit" value="Regresar a Productos por tope" />
     </form>
 </p>
