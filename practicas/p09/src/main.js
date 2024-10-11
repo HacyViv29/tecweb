@@ -7,7 +7,7 @@ function verifNombre(){
         final = false;
     }
     else{
-        if(nombre.length > 10){
+        if(nombre.length > 100){
             alert('El nombre debe de tener 100 caracteres o menos.');
             final = false;
         }
