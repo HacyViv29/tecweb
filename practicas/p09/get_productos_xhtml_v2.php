@@ -61,6 +61,7 @@
         <?php foreach ($data as $index => $row) : ?>
         <tr id="row-<?= $index ?>">
             <th scope="row"><?= $index+1 ?></th>
+            <td class="row-data"><?=$row['id']?></td>
             <td class="row-data"><?= $row['nombre'] ?></td>
             <td class="row-data"><?= $row['marca'] ?></td>
             <td class="row-data"><?= $row['modelo'] ?></td>
