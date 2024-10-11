@@ -19,7 +19,7 @@
     // Ejecuta la actualizacion del registro
     $sql = "UPDATE productos SET nombre = '$nombre', marca = '$marca', modelo = '$modelo', precio = '$precio', detalles = '$detalles', unidades = '$unidades', imagen = '$imagen'  WHERE id='$id'";
     if(mysqli_query($link, $sql)){
-        echo "<h1>Registro del equipo actualizado.</h1><br>";
+        echo "<h1>Registro del equipo actualizado correctamente.</h1><br>";
     } else {
         echo "ERROR: No se ejecuto $sql. " . mysqli_error($link);
     }
@@ -28,7 +28,8 @@
     mysqli_close($link);
 ?>
 
-<p>
+<h2>Elige una opción para continuar:</h2>
+<p style="display: flex; gap: 10px;">
     <form action="get_productos_vigentes_v2.php" method="get">
         <input type="submit" value="Regresar a Productos Vigentes" />
     </form>
