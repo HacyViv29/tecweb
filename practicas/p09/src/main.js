@@ -19,10 +19,17 @@ function verifNombre(){
 function verifMarca(){
     var marca = document.getElementById('form-marca').value.trim();
     var final = true;
+    let marcas = ["HP", "Asus", "Acer", "Huawei"];
 
     if(marca.length == 0){
         alert('La marca es un requisito requerido.');
         final = false;
+    }
+    else{
+        if(!marcas.includes(marca)){
+            alert('Elije una de las marcas predefinidas.');
+            final = false;
+        }
     }
 
     return (final);
