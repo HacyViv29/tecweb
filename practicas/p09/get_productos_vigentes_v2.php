@@ -53,14 +53,14 @@
             <?php foreach ($data as $index => $row) : ?>
             <tr id="row-<?= $index ?>">
                 <th scope="row"><?= $index+1 ?></th>
-                <td><?=$row['id']?></td>
-                <td><?= $row['nombre'] ?></td>
-                <td><?= $row['marca'] ?></td>
-                <td><?= $row['modelo'] ?></td>
-                <td><?= $row['precio'] ?></td>
-                <td><?= $row['unidades'] ?></td>
-                <td><?= utf8_encode($row['detalles']) ?></td>
-                <td><img src=<?= $row['imagen'] ?> ></td>
+                <td class="row-data"><?=$row['id']?></td>
+                <td class="row-data"><?= $row['nombre'] ?></td>
+                <td class="row-data"><?= $row['marca'] ?></td>
+                <td class="row-data"><?= $row['modelo'] ?></td>
+                <td class="row-data"><?= $row['precio'] ?></td>
+                <td class="row-data"><?= $row['unidades'] ?></td>
+                <td class="row-data"><?= utf8_encode($row['detalles']) ?></td>
+                <td class="row-data"><img src=<?= $row['imagen'] ?> ></td>
                 <td><input type="button" value="modificar"  onclick="send2form();" /></td>
             </tr>
             <?php endforeach; ?>
