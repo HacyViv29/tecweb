@@ -81,10 +81,13 @@ function buscarProductos(e) {
         // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
         if (client.readyState == 4 && client.status == 200) {
             console.log('[CLIENTE]\n'+client.responseText);
-            
+
             // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
             let productos = JSON.parse(client.responseText);    // similar a eval('('+client.responseText+')');
-            
+
+            // SE LIMPIA LA TABLA ANTES DE INSERTAR NUEVOS RESULTADOS
+            document.getElementById("productos").innerHTML = "";
+
             // SE VERIFICA SI EL OBJETO JSON TIENE DATOS
             if(Object.keys(productos).length > 0) {
                 // SE CREA UNA LISTA HTML CON LA DESCRIPCIÓN DEL PRODUCTO
