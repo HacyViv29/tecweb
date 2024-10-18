@@ -183,3 +183,171 @@ function init() {
     var JsonString = JSON.stringify(baseJSON,null,2);
     document.getElementById("description").value = JsonString;
 }
+
+function verifNombre(){
+    var nombre = document.getElementById('name').value.trim();
+    var final = true;
+
+    if(nombre.length == 0){
+        alert('El nombre es un requisito requerido.');
+        final = false;
+    }
+    else{
+        if(nombre.length > 100){
+            alert('El nombre debe de tener 100 caracteres o menos.');
+            final = false;
+        }
+    }
+
+    return (final);
+}
+
+function verifMarca(json){
+    var marca = json.marca;
+    var final = true;
+    let marcas = ["HP", "Asus", "Acer", "Huawei"];
+
+    if(marca.length == 0){
+        alert('La marca es un requisito requerido.');
+        final = false;
+    }
+    else{
+        if(!marcas.includes(marca)){
+            alert('Elije una de las marcas predefinidas.');
+            final = false;
+        }
+    }
+
+    return (final);
+
+}
+
+function verifModelo(json){
+    var modelo = json.modelo;
+    var final = true;
+
+    if(modelo.length == 0){
+        alert('El modelo es un requisito requerido.');
+        final = false;
+    }
+    else{
+        if(!/^[A-Za-z0-9 ]+$/.test(modelo)){
+            alert('El modelo debe de estar escrito en formato alfanumerico.');
+            final = false;
+        }
+        else{
+            if(modelo.length > 25){
+                alert('El modelo debe de tener menos de 25 caracteres.');
+                final = false;
+            }
+        }
+    }
+
+    return (final);
+}
+
+function verifPrecio(json){
+    var precio = json.precio;
+    var final = true;
+
+    if(precio.length == 0){
+        alert('El modelo es un requisito requerido.');
+        final = false;
+    }
+    else{
+        var aux = parseFloat(precio);
+        if(aux < 99.99){
+            alert('El precio debe de ser mayor a $ 99.99.');
+            final = false;
+        }
+    }
+
+    return (final);
+}
+
+function verifDetalles(json){
+    var detalles = json.detalles;
+    var final = true;
+
+    if (detalles.length > 250){
+        alert('Los detalles deben de tener 250 caracteres o menos.');
+        final = false;
+    }
+
+    return (final);
+}
+
+function verifUnidades(json){
+    var unidades = json.precio;
+    var aux = parseInt(unidades);
+    var final = true;
+
+    if(unidades.length == 0){
+        alert('Las unidades son un requisito requerido.');
+        final = false;
+    }
+    else{
+        if(aux < 0){
+            alert('El precio debe ser mayor o igual a 0.');
+            final = false;
+        }
+    }
+
+    return (final);
+}
+
+function verifImagen(json){
+    var imagen = json.imagen;
+
+    if(imagen.length == 0){
+        document.getElementById('form-imagen').value = 'img/imagen.png';
+    }
+    return (true);
+}
+
+function verifJSON(json){
+    var final = true;
+
+    for(var i=1; i<8; i++){
+        switch(i){
+            case 1: final = verifNombre(json);
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 2: final = verifMarca(json);
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 3: final = verifModelo(json);
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 4: final = verifPrecio(json);
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 5: final = verifDetalles(json);
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 6: final = verifUnidades(json);
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 7: final = verifImagen(json);
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            default: final=false;
+        }
+    }
+
+    return(final);
+}
