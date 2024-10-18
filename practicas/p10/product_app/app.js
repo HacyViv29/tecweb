@@ -117,7 +117,7 @@ function buscarProductos(e) {
             }
         }
     };
-    client.send("buscar=" + encodeURIComponent(dato));
+    client.send("dato=" + encodeURIComponent(dato));
 }
 
 // FUNCIÓN CALLBACK DE BOTÓN "Agregar Producto"
