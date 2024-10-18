@@ -89,7 +89,7 @@ function buscarProductos(e) {
             document.getElementById("productos").innerHTML = "";
 
             // SE VERIFICA SI EL OBJETO JSON TIENE DATOS
-            if(Object.keys(productos).length > 0) {
+            if(productos.length > 0) {
                 // SE CREA UNA LISTA HTML CON LA DESCRIPCIÓN DEL PRODUCTO
                 let template = '';
                 productos.forEach(producto => {
