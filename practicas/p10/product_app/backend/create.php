@@ -19,7 +19,7 @@
             $modelo = $jsonOBJ->modelo;
             $precio = $jsonOBJ->precio;
             $detalles = isset($jsonOBJ->detalles) ? $jsonOBJ->detalles : '';
-            $unidades = $jsonOBJ->unidad;
+            $unidades = $jsonOBJ->unidades;
             $imagen = isset($jsonOBJ->imagen) ? $jsonOBJ->imagen : 'img/imagen.png';
 
             //Se revisa si el producto ya existe
