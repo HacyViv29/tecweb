@@ -152,12 +152,12 @@ function agregarProducto(e) {
         if (client.readyState == 4 && client.status == 200) {
             console.log(client.responseText);
             let response = JSON.parse(client.responseText);
-            if(response.status == 'success'){
+            if(response.success){
                 //Mensaje de éxito de la operación
                 window.alert(response.message);
             }
             else{
-                window.alert('Error: '+response.message);
+                window.alert('Error: '+ response.message);
             }
         }
     };
