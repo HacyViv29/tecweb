@@ -31,7 +31,7 @@
 
             //Si el producto se repite
             if($result->num_rows > 0){
-                echo json_encode(["success" => false, "messege"=>"El producto es un producto existente."]);
+                echo json_encode(["success" => false, "message"=>"El producto es un producto existente."]);
             }
             else{
                 //El producto no existe o esta eliminado
@@ -42,24 +42,24 @@
                 //Realizar la insercción
                 if($insert->execute()){
                     //Caso éxitoso
-                    echo json_encode(["success" => true, "messege"=>"El producto se ha insertado correctamente."]);
+                    echo json_encode(["success" => true, "message"=>"El producto se ha insertado correctamente."]);
                 }
                 else{
                     //Caso fallido
-                    echo json_encode(["success" => false, "messege"=>"El producto no ha podido ser insertado."]);
+                    echo json_encode(["success" => false, "message"=>"El producto no ha podido ser insertado."]);
                 }
-                $insert->clouse();
+                $insert->close();
             }
-            $verif->clouse();
+            $verif->close();
         }
         else{
             //Falta algun campo obligatorio
-            echo json_encode(["success" => false, "messege"=>"Falto por llenar algún campo obligatorio."]);
+            echo json_encode(["success" => false, "message"=>"Falto por llenar algún campo obligatorio."]);
         }
     }
     else{
         //No se recibio la información
-        echo json_encode(["success" => false, "messege"=>"No se ha recibido ninguna información."]);
+        echo json_encode(["success" => false, "message"=>"No se ha recibido ninguna información."]);
     }
 
     //CERRAR CONEXIÓN A LA BASE DE DATOS
