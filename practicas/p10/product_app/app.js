@@ -133,6 +133,13 @@ function agregarProducto(e) {
     var finalJSON = JSON.parse(productoJsonString);
     // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
     finalJSON['nombre'] = document.getElementById('name').value;
+    
+    //VALIDAR EL OBJETO JSON ANTES DE ENVIARLO AL BD
+    if(!verifJSON(finalJSON)){
+        //Si falla la validación, se cancela la operación
+        return;
+    }
+    
     // SE OBTIENE EL STRING DEL JSON FINAL
     productoJsonString = JSON.stringify(finalJSON,null,2);
 
@@ -144,6 +151,14 @@ function agregarProducto(e) {
         // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
         if (client.readyState == 4 && client.status == 200) {
             console.log(client.responseText);
+            let response = JSON.parse(client.responseText);
+            if(response.status == 'success'){
+                //Mensaje de éxito de la operación
+                window.alert(response.message);
+            }
+            else{
+                window.alert('Error: '+response.message);
+            }
         }
     };
     client.send(productoJsonString);
