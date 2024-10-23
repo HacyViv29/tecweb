@@ -136,7 +136,7 @@ $(document).ready(function() {
         // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
         finalJSON['nombre'] = document.getElementById('name').value;
 
-        if(verifJSON()){
+        if(verifJSON(finalJSON)){
             return;
         }
 
