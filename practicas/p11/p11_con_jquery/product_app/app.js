@@ -142,7 +142,7 @@ $(document).ready(function() {
             return;
         }
         console.log()
-        finalJSON['id'] = document.getElementById('#productId').value;
+        finalJSON['id'] = document.getElementById('productId').value;
         console.log(finalJSON)
 
         productoJsonString = JSON.stringify(finalJSON, null, 2);
