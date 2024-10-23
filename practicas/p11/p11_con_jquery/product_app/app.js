@@ -44,7 +44,7 @@ function listarProductos(){
                         <tr productId="${producto.id}">
                             <td>${producto.id}</td>
                             <td>
-                                <a href="#" class='product-item'>${producto.nombre}</a>
+                                <a href="#" class="product-item">${producto.nombre}</a>
                             </td>
                             <td><ul>${descripcion}</ul></td>
                             <td>
@@ -222,8 +222,8 @@ $(document).ready(function() {
     });
     
     $(document).on('click', 'product-item', function(){
-        let element = $(this)[0].parentElement.parentElement;
-        let id = $(element).attr('productId');
+        let id = $(this)[0].parentElement.parentElement.getAttribute('productId');
+
         $.post('./backend/product-single.php', {id}, function(response){
             const product = JSON.parse(response);
             $('#name').val(product[0].nombre);
