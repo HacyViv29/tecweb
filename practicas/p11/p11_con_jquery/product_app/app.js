@@ -142,10 +142,11 @@ $(document).ready(function() {
             return;
         }
 
-        // SE OBTIENE EL STRING DEL JSON FINAL
         finalJSON['id'] = $('#productId').val();
+        console.log(finalJSON)
 
         productoJsonString = JSON.stringify(finalJSON, null, 2);
+        
         console.log(productoJsonString);
         
         let url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
