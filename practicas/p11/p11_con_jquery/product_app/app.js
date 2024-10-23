@@ -221,7 +221,7 @@ $(document).ready(function() {
         }
     });
     
-    $(document).on('click', 'product-item', function(){
+    $(document).on('click', '.product-item', function(){
         let id = $(this)[0].parentElement.parentElement.getAttribute('productId');
 
         $.post('./backend/product-single.php', {id}, function(response){
