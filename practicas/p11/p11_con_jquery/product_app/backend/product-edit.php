@@ -20,7 +20,6 @@ if(!empty($producto)){
         
         //SE VERIFICA QUE EXISTA EL PRODUCTO
         if ($result->num_rows > 0) {
-            $conexion->set_charset("utf8");
             $sql = "UPDATE productos SET
                         nombre = '{$jsonOBJ->nombre}',
                         marca = '{$jsonOBJ->marca}',
