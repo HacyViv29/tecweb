@@ -214,8 +214,8 @@ $(document).ready(function() {
 
         $.post('./backend/product-single.php', {id}, function(response){
             const product = JSON.parse(response);
-            $('product_id').val(product[0].id)
-            
+            $('#product_id').val(product[0].id)
+
             $('#name').val(product[0].nombre);
             
             let productWithoutNameAndId = {...product[0]};
