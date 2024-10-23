@@ -5,7 +5,7 @@ var baseJSON = {
     "modelo": "XX-000",
     "marca": "NA",
     "detalles": "NA",
-    "imagen": "img/default.png"
+    "imagen": "img/imagen.png"
   };
 
 function init() {
@@ -132,9 +132,9 @@ $(document).ready(function() {
             type: 'POST',
             data: JSON.stringify(finalJSON),
             contentType: 'application/json',
-            success: function(renponse){
+            success: function(response){
                 // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
-                let respuesta = JSON.parse(client.responseText);
+                let respuesta = JSON.parse(response);
                 // SE CREA UNA PLANTILLA PARA CREAR INFORMACIÓN DE LA BARRA DE ESTADO
                 let template_bar = '';
                 template_bar += `
