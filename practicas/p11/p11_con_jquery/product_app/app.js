@@ -66,7 +66,6 @@ $(document).ready(function() {
     init();
     let edit = false;
     $('#product-form button[type="submit"]').text('Agregar Producto');
-
     
     // SE ASIGNA EL EVENTO CLICK AL BOTON DE BUSCAR
     $("#search").keyup(function() {
@@ -129,6 +128,7 @@ $(document).ready(function() {
     // SE ASIGNA EL EVENTO CLICK AL BOTON DE AGREGAR
     $('#product-form').submit(function(e){
         e.preventDefault();
+        
         // SE OBTIENE DESDE EL FORMULARIO EL JSON A ENVIAR
         let productoJsonString = $('#description').val();
     
@@ -141,8 +141,8 @@ $(document).ready(function() {
         if(!verifJSON(finalJSON)){
             return;
         }
-
-        finalJSON['id'] = $('#productId').val();
+        console.log()
+        finalJSON['id'] = document.getElementById('#productId').value;
         console.log(finalJSON)
 
         productoJsonString = JSON.stringify(finalJSON, null, 2);
