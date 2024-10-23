@@ -156,40 +156,37 @@ function agregarProducto(e) {
     // SE OBTIENE EL STRING DEL JSON FINAL
     productoJsonString = JSON.stringify(finalJSON,null,2);
 
-/**
- * AQUÍ DEBES AGREGAR LAS VALIDACIONES DE LOS DATOS EN EL JSON
- * ...
- * 
- * --> EN CASO DE NO HABER ERRORES, SE ENVIAR EL PRODUCTO A AGREGAR
- */
+    //VALIDACIONES DE LOS DATOS EN EL JSON
+    if(verifJSON(finalJSON)){
 
-    // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
-    var client = getXMLHttpRequest();
-    client.open('POST', './backend/product-add.php', true);
-    client.setRequestHeader('Content-Type', "application/json;charset=UTF-8");
-    client.onreadystatechange = function () {
-        // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
-        if (client.readyState == 4 && client.status == 200) {
-            console.log(client.responseText);
-            // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
-            let respuesta = JSON.parse(client.responseText);
-            // SE CREA UNA PLANTILLA PARA CREAR INFORMACIÓN DE LA BARRA DE ESTADO
-            let template_bar = '';
-            template_bar += `
-                        <li style="list-style: none;">status: ${respuesta.status}</li>
-                        <li style="list-style: none;">message: ${respuesta.message}</li>
-                    `;
+        // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
+        var client = getXMLHttpRequest();
+        client.open('POST', './backend/product-add.php', true);
+        client.setRequestHeader('Content-Type', "application/json;charset=UTF-8");
+        client.onreadystatechange = function () {
+            // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
+            if (client.readyState == 4 && client.status == 200) {
+                console.log(client.responseText);
+                // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
+                let respuesta = JSON.parse(client.responseText);
+                // SE CREA UNA PLANTILLA PARA CREAR INFORMACIÓN DE LA BARRA DE ESTADO
+                let template_bar = '';
+                template_bar += `
+                            <li style="list-style: none;">status: ${respuesta.status}</li>
+                            <li style="list-style: none;">message: ${respuesta.message}</li>
+                        `;
 
-            // SE HACE VISIBLE LA BARRA DE ESTADO
-            document.getElementById("product-result").className = "card my-4 d-block";
-            // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
-            document.getElementById("container").innerHTML = template_bar;
+                // SE HACE VISIBLE LA BARRA DE ESTADO
+                document.getElementById("product-result").className = "card my-4 d-block";
+                // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
+                document.getElementById("container").innerHTML = template_bar;
 
-            // SE LISTAN TODOS LOS PRODUCTOS
-            listarProductos();
-        }
-    };
-    client.send(productoJsonString);
+                // SE LISTAN TODOS LOS PRODUCTOS
+                listarProductos();
+            }
+        };
+        client.send(productoJsonString);
+    }
 }
 
 // FUNCIÓN CALLBACK DE BOTÓN "Eliminar"
@@ -252,4 +249,131 @@ function getXMLHttpRequest() {
         }
     }
     return objetoAjax;
+}
+
+function verifJSON(json){
+    var final = true;
+
+    for(var i=1; i<8; i++){
+        switch(i){
+            case 1: var nombre = json['nombre'];
+                    if(nombre.length == 0){
+                        alert('El nombre es un requisito requerido.');
+                        final = false;
+                    }
+                    else{
+                        if(nombre.length > 100){
+                            alert('El nombre debe de tener 100 caracteres o menos.');
+                            final = false;
+                        }
+                    }
+
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 2: var marca = json.marca;
+                    let marcas = ["HP", "Asus", "Acer", "Huawei"];
+                
+                    if(marca.length == 0){
+                        alert('La marca es un requisito requerido.');
+                        final = false;
+                    }
+                    else{
+                        if(!marcas.includes(marca)){
+                            alert('Elije una de las marcas predefinidas.');
+                            final = false;
+                        }
+                    }
+
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 3: var modelo = json.modelo;
+
+                    if(modelo.length == 0){
+                        alert('El modelo es un requisito requerido.');
+                        final = false;
+                    }
+                    else{
+                        if(!/^[A-Za-z0-9 ]+$/.test(modelo)){
+                            alert('El modelo debe de estar escrito en formato alfanumerico.');
+                            final = false;
+                        }
+                        else{
+                            if(modelo.length > 25){
+                                alert('El modelo debe de tener menos de 25 caracteres.');
+                                final = false;
+                            }
+                        }
+                    }
+
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 4: var precio = json.precio;
+                    
+                    if(precio.length == 0){
+                        alert('El modelo es un requisito requerido.');
+                        final = false;
+                    }
+                    else{
+                        var aux = parseFloat(precio);
+                        if(aux < 99.99){
+                            alert('El precio debe de ser mayor a $ 99.99.');
+                            final = false;
+                        }
+                    }
+
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 5: var detalles = json.detalles;
+                    var final = true;
+                
+                    if (detalles.length > 250){
+                        alert('Los detalles deben de tener 250 caracteres o menos.');
+                        final = false;
+                    }
+
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 6: var unidades = json.precio;
+                    var aux = parseInt(unidades);
+                    
+                    if(unidades.length == 0){
+                        alert('Las unidades son un requisito requerido.');
+                        final = false;
+                    }
+                    else{
+                        if(aux < 0){
+                            alert('El precio debe ser mayor o igual a 0.');
+                            final = false;
+                        }
+                    }
+
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 7: var imagen = json.imagen;
+
+                    if(imagen.length == 0){
+                        document.getElementById('form-imagen').value = 'img/imagen.png';
+                    }
+
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            default: final=false;
+        }
+    }
+
+    return(final);
 }
