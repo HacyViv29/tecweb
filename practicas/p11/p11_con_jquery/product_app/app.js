@@ -226,9 +226,14 @@ $(document).ready(function() {
         let id = $(element).attr('productId');
         $.post('./backend/product-single.php', {id}, function(response){
             const product = JSON.parse(response);
-            $('#name').val(product.name);
-            $('#description').val(product.descripcion);
-            edit = true
+            $('#name').val(product[0].nombre);
+            let productWithoutNameAndId = {...product[0]};
+            delete productWithoutNameAndId.nombre;
+            delete productWithoutNameAndId.id;
+            delete productWithoutNameAndId.eliminado;
+
+            $('#description').val(JSON.stringify(productWithoutNameAndId, null, 4));
+            edit = true;
         })
     });
 
