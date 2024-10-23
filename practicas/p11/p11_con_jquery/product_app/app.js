@@ -127,68 +127,50 @@ $(document).ready(function() {
     // SE ASIGNA EL EVENTO CLICK AL BOTON DE AGREGAR
     $('#product-form').submit(function(e){
         e.preventDefault();
-        let productoJsonString = $('#description').val();
-        let finalJSON = JSON.parse(productoJsonString);
-        finalJSON['nombre'] = $('#name').val();
-        if(edit == false){
-            $.ajax({
-                url: './backend/product-add.php',
-                type: 'POST',
-                data: JSON.stringify(finalJSON),
-                contentType: 'application/json',
-                success: function(response){
-                    if(verifJSON(finalJSON)){
-                        // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
-                        let respuesta = JSON.parse(response);
-                        // SE CREA UNA PLANTILLA PARA CREAR INFORMACIÓN DE LA BARRA DE ESTADO
-                        let template_bar = '';
-                        template_bar += `
-                                    <li style="list-style: none;">status: ${respuesta.status}</li>
-                                    <li style="list-style: none;">message: ${respuesta.message}</li>
-                                `;
+        // SE OBTIENE DESDE EL FORMULARIO EL JSON A ENVIAR
+        var productoJsonString = document.getElementById('description').value;
+    
+        // SE CONVIERTE EL JSON DE STRING A OBJETO
+        var finalJSON = JSON.parse(productoJsonString);
+        
+        // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
+        finalJSON['nombre'] = document.getElementById('name').value;
 
-                        // SE HACE VISIBLE LA BARRA DE ESTADO
-                        $('#product-result').removeClass('d-none');
-                        // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
-                        $('#container').html(template_bar);
-
-                        //SE LISTAN TODOS LOS PRODUCTOS
-                        listarProductos();
-                    }
-                    //$('#product-form').trigger('reset');
-                }
-            });
+        if(verifJSON()){
+            return;
         }
-        else{
-            $.ajax({
-                url: './backend/product-edit.php',
-                type: 'POST',
-                data: JSON.stringify(finalJSON),
-                contentType: 'application/json',
-                success: function(response){
-                    if(verifJSON(finalJSON)){
-                        // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
-                        let respuesta = JSON.parse(response);
-                        // SE CREA UNA PLANTILLA PARA CREAR INFORMACIÓN DE LA BARRA DE ESTADO
-                        let template_bar = '';
-                        template_bar += `
-                                    <li style="list-style: none;">status: ${respuesta.status}</li>
-                                    <li style="list-style: none;">message: ${respuesta.message}</li>
-                                `;
 
-                        // SE HACE VISIBLE LA BARRA DE ESTADO
-                        $('#product-result').removeClass('d-none');
-                        // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
-                        $('#container').html(template_bar);
+        // SE OBTIENE EL STRING DEL JSON FINAL
+        finalJSON['id'] = document.getElementById('productId').value;
 
-                        //SE LISTAN TODOS LOS PRODUCTOS
-                        listarProductos();
-                        edit = false;
-                    }
-                    //$('#product-form').trigger('reset');
-                }
-            });
-        }
+        productoJsonString = JSON.stringify(finalJSON, null, 2);
+        console.log(productoJsonString);
+        // Asignar el ID al objeto JSON
+        let url = edit === false ? 'backend/product-add.php' : 'backend/product-edit.php';
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: JSON.stringify(finalJSON), // Convertir el objeto JSON a string
+            contentType: 'application/json; charset=utf-8', // Enviar como JSON
+            success: function(response) {
+                console.log(response);  // Mostrar la respuesta del servidor
+                fetchProduct();  // Actualizar la lista de productos
+                  // Resetear el formulario correctamente
+                resetForm();
+                edit = false;  // Reiniciar el modo de edición
+                let template_bar = '';
+                let respuesta = JSON.parse(response);
+                template_bar += `
+                        <li style="list-style: none;">status: ${respuesta.status}</li>
+                        <li style="list-style: none;">message: ${respuesta.message}</li>
+                    `;
+                $('#product-result').show();
+                $('#container').html(template_bar);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error en la solicitud:', textStatus, errorThrown);  // Manejo de errores
+            }
+        });
     });
 
     // SE ASIGNA EL EVENTO CLICK AL BOTON DE ELIMINAR
