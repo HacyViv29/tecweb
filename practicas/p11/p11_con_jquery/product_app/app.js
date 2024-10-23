@@ -130,10 +130,10 @@ $(document).ready(function() {
     $('#product-form').submit(function(e){
         e.preventDefault();
         // SE OBTIENE DESDE EL FORMULARIO EL JSON A ENVIAR
-        var productoJsonString = document.getElementById('description').value;
+        let productoJsonString = $('#description').val();
     
         // SE CONVIERTE EL JSON DE STRING A OBJETO
-        var finalJSON = JSON.parse(productoJsonString);
+        let finalJSON = JSON.parse(productoJsonString);
         
         // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
         finalJSON['nombre'] = document.getElementById('name').value;
@@ -143,12 +143,13 @@ $(document).ready(function() {
         }
 
         // SE OBTIENE EL STRING DEL JSON FINAL
-        finalJSON['id'] = document.getElementById('productId').value;
+        finalJSON['id'] = $('#productId').val();
 
         productoJsonString = JSON.stringify(finalJSON, null, 2);
         console.log(productoJsonString);
-        // Asignar el ID al objeto JSON
+        
         let url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
+        
         $.ajax({
             url: url,
             type: 'POST',
@@ -159,6 +160,7 @@ $(document).ready(function() {
 
                 let template_bar = '';
                 let respuesta = JSON.parse(response);
+                
                 template_bar += `
                         <li style="list-style: none;">status: ${respuesta.status}</li>
                         <li style="list-style: none;">message: ${respuesta.message}</li>
