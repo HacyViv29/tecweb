@@ -65,6 +65,8 @@ function listarProductos(){
 $(document).ready(function() {
     init();
     let edit = false;
+    $('#product-form button[type="submit"]').text('Agregar Producto');
+
     
     // SE ASIGNA EL EVENTO CLICK AL BOTON DE BUSCAR
     $("#search").keyup(function() {
@@ -136,7 +138,7 @@ $(document).ready(function() {
         // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
         finalJSON['nombre'] = document.getElementById('name').value;
 
-        if(verifJSON(finalJSON)){
+        if(!verifJSON(finalJSON)){
             return;
         }
 
@@ -146,7 +148,7 @@ $(document).ready(function() {
         productoJsonString = JSON.stringify(finalJSON, null, 2);
         console.log(productoJsonString);
         // Asignar el ID al objeto JSON
-        let url = edit === false ? 'backend/product-add.php' : 'backend/product-edit.php';
+        let url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
         $.ajax({
             url: url,
             type: 'POST',
@@ -154,10 +156,7 @@ $(document).ready(function() {
             contentType: 'application/json; charset=utf-8', // Enviar como JSON
             success: function(response) {
                 console.log(response);  // Mostrar la respuesta del servidor
-                fetchProduct();  // Actualizar la lista de productos
-                  // Resetear el formulario correctamente
-                resetForm();
-                edit = false;  // Reiniciar el modo de edición
+
                 let template_bar = '';
                 let respuesta = JSON.parse(response);
                 template_bar += `
@@ -166,6 +165,10 @@ $(document).ready(function() {
                     `;
                 $('#product-result').show();
                 $('#container').html(template_bar);
+                
+                edit = false;  // Reiniciar el modo de edición
+                $('#product-form button[type="submit"]').text('Agregar Producto');
+                listarProductos();
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.error('Error en la solicitud:', textStatus, errorThrown);  // Manejo de errores
@@ -216,6 +219,7 @@ $(document).ready(function() {
 
             $('#description').val(JSON.stringify(productWithoutNameAndId, null, 4));
             edit = true;
+            $('#product-form button[type="submit"]').text('Actualizar Producto');
         })
     });
 
