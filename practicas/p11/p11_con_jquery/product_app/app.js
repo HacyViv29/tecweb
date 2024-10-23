@@ -20,6 +20,13 @@ function init() {
     listarProductos();
 }
 
+function resetForm(){
+    document.getElementById('name').value = '';
+
+    var JsonString = JSON.stringify(baseJSON,null,2);
+    document.getElementById("description").value = JsonString;
+}
+
 function listarProductos(){
     $.ajax({
         url: './backend/product-list.php',
@@ -172,7 +179,7 @@ $(document).ready(function() {
                 
                 edit = false;  // Reiniciar el modo de edición
                 $('#product-form button[type="submit"]').text('Agregar Producto');
-                document.getElementById("description").value = JsonString;
+                resetForm();
                 listarProductos();
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -235,17 +242,20 @@ $(document).ready(function() {
 
 function verifJSON(json){
     var final = true;
-
+    let status = 'success';
+    let message = "Validación exitosa"
     for(var i=1; i<8; i++){
         switch(i){
             case 1: var nombre = json['nombre'];
                     if(nombre.length == 0){
-                        alert('El nombre es un requisito requerido.');
+                        status = 'error';
+                        message = 'El nombre es un requisito requerido.';
                         final = false;
                     }
                     else{
                         if(nombre.length > 100){
-                            alert('El nombre debe de tener 100 caracteres o menos.');
+                            status = 'error';
+                            message = 'El nombre debe de tener 100 caracteres o menos.';
                             final = false;
                         }
                     }
@@ -258,12 +268,14 @@ function verifJSON(json){
                     let marcas = ["HP", "Asus", "Acer", "Huawei"];
                 
                     if(marca.length == 0){
-                        alert('La marca es un requisito requerido.');
+                        status = 'error';
+                        message = 'La marca es un requisito requerido.';
                         final = false;
                     }
                     else{
                         if(!marcas.includes(marca)){
-                            alert('Elije una de las marcas predefinidas.');
+                            status = 'error';
+                            message = 'Elije una de las marcas predefinidas.';
                             final = false;
                         }
                     }
@@ -275,17 +287,20 @@ function verifJSON(json){
             case 3: var modelo = json.modelo;
 
                     if(modelo.length == 0){
-                        alert('El modelo es un requisito requerido.');
+                        status = 'error';
+                        message = 'El modelo es un requisito requerido.';
                         final = false;
                     }
                     else{
                         if(!/^[A-Za-z0-9 ]+$/.test(modelo)){
-                            alert('El modelo debe de estar escrito en formato alfanumerico.');
+                            status = 'error';
+                            message = 'El modelo debe de estar escrito en formato alfanumerico.';
                             final = false;
                         }
                         else{
                             if(modelo.length > 25){
-                                alert('El modelo debe de tener menos de 25 caracteres.');
+                                status = 'error';
+                                message = 'El modelo debe de tener menos de 25 caracteres.';
                                 final = false;
                             }
                         }
@@ -298,13 +313,15 @@ function verifJSON(json){
             case 4: var precio = json.precio;
                     
                     if(precio.length == 0){
-                        alert('El modelo es un requisito requerido.');
+                        status = 'error';
+                        message = 'El modelo es un requisito requerido.';
                         final = false;
                     }
                     else{
                         var aux = parseFloat(precio);
                         if(aux < 99.99){
-                            alert('El precio debe de ser mayor a $ 99.99.');
+                            status = 'error';
+                            message = 'El precio debe de ser mayor a $ 99.99.';
                             final = false;
                         }
                     }
@@ -317,7 +334,8 @@ function verifJSON(json){
                     var final = true;
                 
                     if (detalles.length > 250){
-                        alert('Los detalles deben de tener 250 caracteres o menos.');
+                        status = 'error';
+                        message = 'Los detalles deben de tener 250 caracteres o menos.';
                         final = false;
                     }
 
@@ -329,12 +347,14 @@ function verifJSON(json){
                     var aux = parseInt(unidades);
                     
                     if(unidades.length == 0){
-                        alert('Las unidades son un requisito requerido.');
+                        status = 'error';
+                        message = 'Las unidades son un requisito requerido.';
                         final = false;
                     }
                     else{
                         if(aux < 0){
-                            alert('El precio debe ser mayor o igual a 0.');
+                            status = 'error';
+                            message = 'El precio debe ser mayor o igual a 0.';
                             final = false;
                         }
                     }
@@ -355,6 +375,17 @@ function verifJSON(json){
                     break;
             default: final=false;
         }
+    }
+    if(final == false){
+        let template_bar = '';
+        template_bar += `
+            <li style="list-style: none;">status: ${status}</li>
+            <li style="list-style: none;">message: ${message}</li>
+        `;
+        // SE HACE VISIBLE LA BARRA DE ESTADO
+        document.getElementById("product-result").className = "card my-4 d-block";
+        // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
+        document.getElementById("container").innerHTML = template_bar;
     }
 
     return(final);
