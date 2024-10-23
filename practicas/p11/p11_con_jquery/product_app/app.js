@@ -166,11 +166,13 @@ $(document).ready(function() {
                         <li style="list-style: none;">status: ${respuesta.status}</li>
                         <li style="list-style: none;">message: ${respuesta.message}</li>
                     `;
-                $('#product-result').show();
+                
+                $('#product-result').removeClass('d-none');;
                 $('#container').html(template_bar);
                 
                 edit = false;  // Reiniciar el modo de edición
                 $('#product-form button[type="submit"]').text('Agregar Producto');
+                document.getElementById("description").value = JsonString;
                 listarProductos();
             },
             error: function(jqXHR, textStatus, errorThrown) {
