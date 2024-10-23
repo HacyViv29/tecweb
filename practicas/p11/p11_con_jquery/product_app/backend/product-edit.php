@@ -13,22 +13,23 @@ if(!empty($producto)){
      // SE TRANSFORMA EL STRING DEL JASON A OBJETO
     $jsonOBJ = json_decode($producto);
 
-    if(isset($jsonOBJ->nombre)){
+    if(isset($jsonOBJ->id)){
         // SE ASUME QUE LOS DATOS YA FUERON VALIDADOS ANTES DE ENVIARSE
-        $sql = "SELECT * FROM productos WHERE nombre = '{$jsonOBJ->nombre}' AND eliminado = 0";
+        $sql = "SELECT * FROM productos WHERE id = '{$jsonOBJ->id}' AND eliminado = 0";
         $result = $conexion->query($sql);
         
         //SE VERIFICA QUE EXISTA EL PRODUCTO
         if ($result->num_rows > 0) {
             $conexion->set_charset("utf8");
             $sql = "UPDATE productos SET
+                        nombre = '{$jsonOBJ->nombre}',
                         marca = '{$jsonOBJ->marca}',
                         modelo = '{$jsonOBJ->modelo}',
                         precio = {$jsonOBJ->precio},
                         detalles = '{$jsonOBJ->detalles}',
                         unidades = {$jsonOBJ->unidades},
                         imagen = '{$jsonOBJ->imagen}'
-                    WHERE nombre = '{$nombre}' AND eliminado = 0";
+                    WHERE id = '{$jsonOBJ->id}' AND eliminado = 0";
             
             if($conexion->query($sql)){
                 $data['status'] =  "success";
