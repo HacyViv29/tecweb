@@ -33,6 +33,7 @@ function listarProductos(){
         type: 'GET',
         success: function(response){
             let productos = JSON.parse(response);
+            console.log(response);
             // SE VERIFICA SI EL OBJETO JSON TIENE DATOS
             if(Object.keys(productos).length > 0) {
                 // SE CREA UNA PLANTILLA PARA CREAR LAS FILAS A INSERTAR EN EL DOCUMENTO HTML
