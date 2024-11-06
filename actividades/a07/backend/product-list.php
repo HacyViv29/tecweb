@@ -1,11 +1,11 @@
 <?php
-    use backend\myapi\Productos;
+    use backend\myapi\Productos as Productos;
 
     require_once __DIR__ . '/myapi/Productos.php';
 
     $productos = new Productos('marketzone');
     $productos->list($finalJSON);
-    echo $productos ->getData();
+    $productos -> getData();
 ?>
 <!--
     include_once __DIR__.'/database.php';
