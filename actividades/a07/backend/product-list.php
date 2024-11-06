@@ -4,7 +4,7 @@
     require_once __DIR__ . '/myapi/Productos.php';
 
     $productos = new Productos('marketzone');
-    $productos->list($finalJSON);
+    $productos->list();
     $productos -> getData();
 ?>
 <!--
