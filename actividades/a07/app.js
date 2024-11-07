@@ -84,8 +84,6 @@ $(document).ready(function() {
                 success: function(response) {
                     let productos = JSON.parse(response);
                     
-                    // SE VERIFICA SI EL OBJETO JSON TIENE DATOS
-                    if(Object.keys(productos).length > 0) {
                         // SE CREA UNA PLANTILLA PARA CREAR LAS FILAS A INSERTAR EN EL DOCUMENTO HTML
                         let template = '';
                         let template_bar = '';
@@ -125,7 +123,6 @@ $(document).ready(function() {
                         $('#container').html(template_bar);  
                         // SE INSERTA LA PLANTILLA EN EL ELEMENTO CON ID "productos"
                         $('#products').html(template);
-                    }
                 }
             });
         }
