@@ -139,7 +139,7 @@
                         // SE CODIFICAN A UTF-8 LOS DATOS Y SE MAPEAN AL ARREGLO DE RESPUESTA
                         foreach($rows as $num => $row) {
                             foreach($row as $key => $value) {
-                                $data[$num][$key] = utf8_encode($value);
+                                $this->data[$num][$key] = utf8_encode($value);
                             }
                         }
                     }
