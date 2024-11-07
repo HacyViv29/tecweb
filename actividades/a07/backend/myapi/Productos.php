@@ -1,6 +1,6 @@
 <?php
     namespace backend\myapi;
-    use backend\myapi\DataBase as DataBase;
+    use backend\myapi\DataBase;
 
     require_once __DIR__ . '/DataBase.php';
 
