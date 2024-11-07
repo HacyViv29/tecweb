@@ -83,14 +83,14 @@ $(document).ready(function() {
                 data: {search},
                 success: function(response) {
                     let productos = JSON.parse(response);
-                    
+                    console.log(response);
                         // SE CREA UNA PLANTILLA PARA CREAR LAS FILAS A INSERTAR EN EL DOCUMENTO HTML
                         let template = '';
                         let template_bar = '';
 
                         productos.forEach(producto => {
                             // SE COMPRUEBA QUE SE OBTIENE UN OBJETO POR ITERACIÓN
-                            //console.log(producto);
+                            console.log(producto);
 
                             // SE CREA UNA LISTA HTML CON LA DESCRIPCIÓN DEL PRODUCTO
                             let descripcion = '';
