@@ -160,7 +160,7 @@ $(document).ready(function() {
         $.ajax({
             url: url,
             type: 'POST',
-            data: finalJSON, 
+            data: JSON.stringify(finalJSON), // Convertir el objeto JSON a string 
             contentType: 'application/json; charset=utf-8', // Enviar como JSON
             success: function(response) {
                 console.log(response);  // Mostrar la respuesta del servidor
