@@ -1,4 +1,13 @@
 <?php
+    use backend\myapi\Productos;
+
+    require_once __DIR__ . '/myapi/Productos.php';
+
+    $productos = new Productos('marketzone');
+    $productos->search($_GET['search']);
+    echo $productos ->getData();
+    
+    /*
     include_once __DIR__.'/database.php';
 
     // SE CREA EL ARREGLO QUE SE VA A DEVOLVER EN FORMA DE JSON
@@ -29,4 +38,5 @@
     
     // SE HACE LA CONVERSIÓN DE ARRAY A JSON
     echo json_encode($data, JSON_PRETTY_PRINT);
+    */
 ?>
