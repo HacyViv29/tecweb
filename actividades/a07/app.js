@@ -32,7 +32,7 @@ function listarProductos(){
         url: './backend/product-list.php',
         type: 'GET',
         success: function(response){
-            console.log(response);
+            //console.log(response);
             let productos = JSON.parse(response);
             // SE CREA UNA PLANTILLA PARA CREAR LAS FILAS A INSERTAR EN EL DOCUMENTO HTML
             let template = '';
@@ -160,7 +160,7 @@ $(document).ready(function() {
         $.ajax({
             url: url,
             type: 'POST',
-            data: JSON.stringify(finalJSON), // Convertir el objeto JSON a string
+            data: finalJSON, 
             contentType: 'application/json; charset=utf-8', // Enviar como JSON
             success: function(response) {
                 console.log(response);  // Mostrar la respuesta del servidor
