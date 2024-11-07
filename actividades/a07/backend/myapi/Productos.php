@@ -2,14 +2,14 @@
     namespace backend\myapi;
     use backend\myapi\DataBase;
 
-    require_once __DIR__ . '/DataBase.php';
+    include_once __DIR__ . '/DataBase.php';
 
     class Productos extends DataBase {
         private $data;
 
-        public function __construct( $db, $user='root', $pass='Buap123') {
+        public function __construct($db, $user='root', $pass='Buap123') {
             $this->data = array();
-            parent::__construct( $db, $user, $pass);
+            parent::__construct($db, $user, $pass);
         }
 
         public function add($jsonOBJ){

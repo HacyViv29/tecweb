@@ -17,7 +17,7 @@ function init() {
     document.getElementById("description").value = JsonString;
 
     // SE LISTAN TODOS LOS PRODUCTOS
-    listarProductos();
+    //listarProductos();
 }
 
 function resetForm(){
@@ -34,39 +34,35 @@ function listarProductos(){
         success: function(response){
             console.log(response);
             let productos = JSON.parse(response);
-            
-            // SE VERIFICA SI EL OBJETO JSON TIENE DATOS
-            if(Object.keys(productos).length > 0) {
-                // SE CREA UNA PLANTILLA PARA CREAR LAS FILAS A INSERTAR EN EL DOCUMENTO HTML
-                let template = '';
+            // SE CREA UNA PLANTILLA PARA CREAR LAS FILAS A INSERTAR EN EL DOCUMENTO HTML
+            let template = '';
 
-                productos.forEach(producto => {
-                    // SE CREA UNA LISTA HTML CON LA DESCRIPCIÓN DEL PRODUCTO
-                    let descripcion = '';
-                    descripcion += '<li>precio: '+producto.precio+'</li>';
-                    descripcion += '<li>unidades: '+producto.unidades+'</li>';
-                    descripcion += '<li>modelo: '+producto.modelo+'</li>';
-                    descripcion += '<li>marca: '+producto.marca+'</li>';
-                    descripcion += '<li>detalles: '+producto.detalles+'</li>';
+            productos.forEach(producto => {
+                // SE CREA UNA LISTA HTML CON LA DESCRIPCIÓN DEL PRODUCTO
+                let descripcion = '';
+                descripcion += '<li>precio: '+producto.precio+'</li>';
+                descripcion += '<li>unidades: '+producto.unidades+'</li>';
+                descripcion += '<li>modelo: '+producto.modelo+'</li>';
+                descripcion += '<li>marca: '+producto.marca+'</li>';
+                descripcion += '<li>detalles: '+producto.detalles+'</li>';
                 
-                    template += `
-                        <tr productId="${producto.id}">
-                            <td>${producto.id}</td>
-                            <td>
-                                <a href="#" class="product-item">${producto.nombre}</a>
-                            </td>
-                            <td><ul>${descripcion}</ul></td>
-                            <td>
-                                <button class="product-delete btn btn-danger">
-                                    Eliminar
-                                </button>
-                            </td>
-                        </tr>
-                    `;
-                });
-                // SE INSERTA LA PLANTILLA EN EL ELEMENTO CON ID "productos"
-                $('#products').html(template);
-            }
+                template += `
+                    <tr productId="${producto.id}">
+                        <td>${producto.id}</td>
+                        <td>
+                            <a href="#" class="product-item">${producto.nombre}</a>
+                        </td>
+                        <td><ul>${descripcion}</ul></td>
+                        <td>
+                            <button class="product-delete btn btn-danger">
+                                Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+            // SE INSERTA LA PLANTILLA EN EL ELEMENTO CON ID "productos"
+            $('#products').html(template);
         }
     });
 }
@@ -74,6 +70,7 @@ function listarProductos(){
 $(document).ready(function() {
     init();
     let edit = false;
+    listarProductos();
     $('#product-form button[type="submit"]').text('Agregar Producto');
     
     // SE ASIGNA EL EVENTO CLICK AL BOTON DE BUSCAR

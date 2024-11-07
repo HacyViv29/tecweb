@@ -1,7 +1,7 @@
 <?php
-    use backend\myapi\Productos as Productos;
+    use backend\myapi\Productos;
 
-    require_once __DIR__ . '/myapi/Productos.php';
+    include_once __DIR__ . '/myapi/Productos.php';
 
     $productos = new Productos('marketzone');
     $productos->list();
