@@ -5,7 +5,7 @@
 
     $productos = new Productos('marketzone');
     $productos->list();
-    $productos -> getData();
+    echo $productos -> getData();
 ?>
 <!--
     include_once __DIR__.'/database.php';

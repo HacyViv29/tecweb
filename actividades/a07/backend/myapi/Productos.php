@@ -1,7 +1,7 @@
 <?php
     namespace backend\myapi;
-
     use backend\myapi\DataBase as DataBase;
+
     require_once __DIR__ . '/DataBase.php';
 
     class Productos extends DataBase {
@@ -114,7 +114,7 @@
                     // SE CODIFICAN A UTF-8 LOS DATOS Y SE MAPEAN AL ARREGLO DE RESPUESTA
                     foreach($rows as $num => $row) {
                         foreach($row as $key => $value) {
-                            $data[$num][$key] = utf8_encode($value);
+                            $this->data[$num][$key] = utf8_encode($value);
                         }
                     }
                 }
@@ -205,8 +205,7 @@
         }
 
         public function getData(){
-            echo json_encode($this->data, JSON_PRETTY_PRINT);
-            return $this->data;
+            return json_encode($this->data, JSON_PRETTY_PRINT);
         }
 
     }
