@@ -1,4 +1,12 @@
 <?php
+    use backend\myapi\Productos;
+
+    require_once __DIR__ . '/myapi/Productos.php';
+
+    $productos = new Productos('marketzone');
+    $productos->single($_POST['id']);
+    echo $productos ->getData();
+    /*
     include_once __DIR__.'/database.php';
 
     if(isset($_POST['id'])){
@@ -28,4 +36,5 @@
 
     // SE HACE LA CONVERSIÓN DE ARRAY A JSON
     echo json_encode($data, JSON_PRETTY_PRINT);
+    */
 ?>
