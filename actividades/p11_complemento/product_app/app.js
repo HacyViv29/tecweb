@@ -136,33 +136,27 @@ $(document).ready(function() {
             return;
         }
 
-        // SE OBTIENE DESDE EL FORMULARIO EL JSON A ENVIAR
-        let productoJsonString = $('#detalles').val();
+        //SE OBTIENEN LOS VALORES DE LOS INPUTS
+        let nombre = document.getElementById('name').value;
+        let precio = document.getElementById('precio').value;
+        let unidades = document.getElementById('unidades').value;
+        let modelo = document.getElementById('modelo').value;
+        let marca = document.getElementById('marca').value;
+        let detalles = document.getElementById('detalles').value;
+        let imagen = document.getElementById('imagen').value;
     
-        // SE CONVIERTE EL JSON DE STRING A OBJETO
-        let finalJSON = JSON.parse(productoJsonString);
+        // CREAR UN OBJETO JSON
+        let finalJSON = {
+            'nombre': nombre,
+            'precio': precio,
+            'unidades': unidades,
+            'modelo': modelo,
+            'marca': marca,
+            'detalles': detalles,
+            'imagen': imagen
+        };
         
-        // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
-        finalJSON['nombre'] = document.getElementById('name').value;
-        finalJSON['precio'] = document.getElementById('precio').value;
-        finalJSON['unidades'] = document.getElementById('descripcion').value;
-        finalJSON['modelo'] = document.getElementById('modelo').value;
-        finalJSON['marca'] = document.getElementById('marca').value;
-        finalJSON['imagen'] = document.getElementById('imagen').value;
-
-
-        if(!verifFinal()){
-            return;
-        }
-
-        console.log()
-        finalJSON['id'] = document.getElementById('productId').value;
-        console.log(finalJSON)
-
-        productoJsonString = JSON.stringify(finalJSON, null, 2);
-        
-        console.log(productoJsonString);
-        
+        //Derterminar la URL del archivo PHP
         let url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
         
         $.ajax({
