@@ -1,4 +1,3 @@
-
 function init() {
     /**
      * Convierte el JSON a string para poder mostrarlo
@@ -327,9 +326,9 @@ function verifNombre(edit){
                     type: "POST",
                     url: "./backend/product-singleByName.php",  // ruta al archivo PHP
                     data: { name: nombre },
-                    dataType: "json",
-                    success: function(data) {
-                        if (Array.isArray(data) && data.length > 0) {
+                    success: function(response) {
+                        const product = JSON.parse(response);
+                        if(product[0].nombre == nombre){
                             status = "error";
                             message = "El nombre ya está registrado";
                             final = false;
