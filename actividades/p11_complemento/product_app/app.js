@@ -133,7 +133,7 @@ $(document).ready(function() {
     $('#product-form').submit(function(e){
         e.preventDefault();
         
-        if(!verifFinal()){
+        if(!verifFinal(edit)){
             return;
         }
 
@@ -255,7 +255,7 @@ $(document).ready(function() {
     // VALIDAR NOMBRE
     $("#name").on("blur",function() {
         let name = document.getElementById('name');
-        if(verifNombre()){
+        if(verifNombre(edit)){
             ocultarBarraEstado();
         }
     });
@@ -308,7 +308,7 @@ function verifNombre(){
     var final = true;
     let status = 'success';
     let message = "Validación exitosa"
-    var nombre = document.getElementById('name');
+    var nombre = document.getElementById('name').value;
     
     if(nombre.length == 0){
         status = 'error';
@@ -322,22 +322,24 @@ function verifNombre(){
             final = false;
         }
         else{
-            $.ajax({
-                type: "POST",
-                url: "./backend/product-singleByName.php",  // ruta al archivo PHP
-                data: { name: nombre },
-                dataType: "json",
-                success: function(data) {
-                    if (Array.isArray(data) && data.length > 0) {
-                        status = "error";
-                        message = "El nombre ya está registrado";
-                        final = false;
-                    } 
-                },
-                error: function(xhr, status, error) {
-                    console.error("Error en la solicitud:", error);
-                }
-            });
+            if(edit == true){
+                $.ajax({
+                    type: "POST",
+                    url: "./backend/product-singleByName.php",  // ruta al archivo PHP
+                    data: { name: nombre },
+                    dataType: "json",
+                    success: function(data) {
+                        if (Array.isArray(data) && data.length > 0) {
+                            status = "error";
+                            message = "El nombre ya está registrado";
+                            final = false;
+                        } 
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error en la solicitud:", error);
+                    }
+                });
+            }
         }
     }
 
@@ -353,7 +355,7 @@ function verifPrecio(){
 var final = true;
 let status = 'success';
 let message = "Validación exitosa"
-var precio = document.getElementById('precio');
+var precio = document.getElementById('precio').value;
 
     if(precio.length == 0){
         status = 'error';
@@ -380,7 +382,7 @@ function verifUnidades(){
     var final = true;
     let status = 'success';
     let message = "Validación exitosa"
-    var unidades = document.getElementById('unidades');
+    var unidades = document.getElementById('unidades').value;
     var aux = parseInt(unidades);
     
     if(unidades.length == 0){
@@ -407,7 +409,7 @@ function verifModelo(){
     var final = true;
     let status = 'success';
     let message = "Validación exitosa"
-    var modelo = document.getElementById('modelo');
+    var modelo = document.getElementById('modelo').value;
     
     if(modelo.length == 0){
         status = 'error';
@@ -440,7 +442,7 @@ function verifMarca(){
     var final = true;
     let status = 'success';
     let message = "Validación exitosa"
-    var marca = document.getElementById('marca');
+    var marca = document.getElementById('marca').value;
     let marcas = ["HP", "Asus", "Acer", "Huawei"];
     
     if(marca.length == 0){
@@ -467,7 +469,7 @@ function verifDetalles(){
     var final = true;
     let status = 'success';
     let message = "Validación exitosa"
-    var detalles = document.getElementById('detalles');
+    var detalles = document.getElementById('detalles').value;
     
     if (detalles.length > 250){
         status = 'error';
@@ -486,7 +488,7 @@ function verifImagen(){
     var final = true;
     let status = 'success';
     let message = "Validación exitosa"
-    var imagen = document.getElementById('imagen');
+    var imagen = document.getElementById('imagen').value;
     
     if(imagen.length == 0){
         imagen = 'img/imagen.png';
@@ -516,12 +518,12 @@ function ocultarBarraEstado(){
     document.getElementById("product-result").className = "d-none";
 }
 
-function verifFinal(){
+function verifFinal(edit){
     var final = true;
 
     for(var i=1; i<8; i++){
         switch(i){
-            case 1: final = verifNom();
+            case 1: final = verifNom(edit);
                     if(final == false){
                         i = 8;
                     }
