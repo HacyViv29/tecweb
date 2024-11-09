@@ -118,7 +118,7 @@ $(document).ready(function() {
                             `;
                         });
                         // SE HACE VISIBLE LA BARRA DE ESTADO
-                        $('#product-result').className = "card my-4 d-block";
+                        $('#product-result').removeClass('d-none');
                         // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
                         $('#container').html(template_bar);  
                         // SE INSERTA LA PLANTILLA EN EL ELEMENTO CON ID "productos"
@@ -178,7 +178,7 @@ $(document).ready(function() {
                         <li style="list-style: none;">message: ${respuesta.message}</li>
                     `;
                 
-                $('#product-result').className = "card my-4 d-block";
+                $('#product-result').removeClass('d-none');
                 $('#container').html(template_bar);
                 
                 edit = false;  // Reiniciar el modo de edición
@@ -211,7 +211,7 @@ $(document).ready(function() {
                     `;
 
                     // SE HACE VISIBLE LA BARRA DE ESTADO
-                    $('#product-result').className = "card my-4 d-block";
+                    $('#product-result').removeClass('d-none');
                     // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
                     $('#container').html(template_bar);
                     
@@ -531,7 +531,7 @@ function mostrarBarraVerif(status, message){
         <li style="list-style: none;">message: ${message}</li>
     `;
     // SE HACE VISIBLE LA BARRA DE ESTADO
-    document.getElementById("product-result").className = "card my-4 d-block";
+    document.getElementById("product-result").removeClass('d-none');
     // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
     document.getElementById("container").innerHTML = template_bar;
 }
