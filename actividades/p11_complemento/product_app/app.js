@@ -252,7 +252,7 @@ $(document).ready(function() {
     $("#name").on("blur",function() {
         verifNombre(edit).then(function(isValid) {
             if (isValid) {
-                ocultarBarraEstado();
+                return;
             }
         });
     });
@@ -260,42 +260,42 @@ $(document).ready(function() {
     // VALIDAR PRECIO
     $("#precio").on("blur", function() {
         if(verifPrecio()){
-            ocultarBarraEstado();
+            return;
         }
     });
 
     //VALIDAR UNIDADES
     $("#unidades").on("blur", function() {
         if(verifUnidades()){
-            ocultarBarraEstado();
+            return;
         }
     });
 
     // VALIDAR MODELO
     $("#modelo").on("blur",function() {
         if(verifModelo()){
-            ocultarBarraEstado();
+            return;
         }
     });
 
     //VALIDAR MARCA
     $("#marca").on("blur",function() {
         if(verifMarca()){
-            ocultarBarraEstado();
+            return;
         }
     });
 
     //VALIDAR DETALLES
     $("#detalles").on("blur",function() {
         if(verifDetalles()){
-            ocultarBarraEstado();
+            return;
         }
     });
 
     //VALIDAR IMAGEN
     $("#imagen").on("blur",function() {
         if(verifImagen()){
-            ocultarBarraEstado();
+            return;
         }
     });
 });
@@ -339,9 +339,8 @@ async function verifNombre(edit){
     console.log(message);
     console.log(final);
 
-    if(final == false){
         mostrarBarraVerif(status, message);
-    }
+
 
     return (final);
 }
@@ -389,9 +388,9 @@ var precio = document.getElementById('precio').value;
         }
     }
     
-    if(final == false){
-        mostrarBarraVerif(status, message);
-    }
+
+    mostrarBarraVerif(status, message);
+
 
     return (final);
 }
@@ -416,9 +415,8 @@ function verifUnidades(){
         }
     }
 
-    if(final == false){
-        mostrarBarraVerif(status, message);
-    }
+
+    mostrarBarraVerif(status, message);
 
     return (final);
 }
@@ -449,9 +447,9 @@ function verifModelo(){
         }
     }
 
-    if(final == false){
-        mostrarBarraVerif(status, message);
-    }
+
+    mostrarBarraVerif(status, message);
+
 
     return (final);
 }
@@ -476,9 +474,8 @@ function verifMarca(){
         }
     }
 
-    if(final == false){
-        mostrarBarraVerif(status, message);
-    }
+    mostrarBarraVerif(status, message);
+    
 
     return (final);
 }
@@ -500,9 +497,7 @@ function verifDetalles(){
         }
     }
 
-    if(final == false){
-        mostrarBarraVerif(status, message);
-    }
+    mostrarBarraVerif(status, message);
 
     return (final);
 }
@@ -517,9 +512,7 @@ function verifImagen(){
         imagen = 'img/imagen.png';
     }
 
-    if(final == false){
-        mostrarBarraVerif(status, message);
-    }
+    mostrarBarraVerif(status, message);
 
     return (final);
 }
@@ -536,10 +529,6 @@ function mostrarBarraVerif(status, message){
     document.getElementById("container").innerHTML = template_bar;
 }
 
-function ocultarBarraEstado(){
-    // SE OCULTA LA BARRA DE ESTADO
-    document.getElementById("product-result").className = "d-none";
-}
 
 function verifFinal(edit){
     var final = true;
