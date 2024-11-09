@@ -304,7 +304,7 @@ $(document).ready(function() {
 async function verifNombre(edit){
     var final = true;
     let status = 'success';
-    let message = "Validación exitosa"
+    let message = "Validación de nombre exitosa"
     var nombre = document.getElementById('name').value;
     
     if(nombre.length == 0){
@@ -371,7 +371,7 @@ function verificarAsy(nombre) {
 function verifPrecio(){
 var final = true;
 let status = 'success';
-let message = "Validación exitosa"
+let message = "Validación de precio exitosa"
 var precio = document.getElementById('precio').value;
 
     if(precio.length == 0){
@@ -398,7 +398,7 @@ var precio = document.getElementById('precio').value;
 function verifUnidades(){
     var final = true;
     let status = 'success';
-    let message = "Validación exitosa"
+    let message = "Validación de unidades exitosa"
     var unidades = document.getElementById('unidades').value;
     var aux = parseInt(unidades);
     
@@ -424,7 +424,7 @@ function verifUnidades(){
 function verifModelo(){
     var final = true;
     let status = 'success';
-    let message = "Validación exitosa"
+    let message = "Validación de modelo exitosa"
     var modelo = document.getElementById('modelo').value;
     
     if(modelo.length == 0){
@@ -457,7 +457,7 @@ function verifModelo(){
 function verifMarca(){
     var final = true;
     let status = 'success';
-    let message = "Validación exitosa"
+    let message = "Validación de marca exitosa"
     var marca = document.getElementById('marca').value;
     let marcas = ["HP", "Asus", "Acer", "Huawei"];
     
@@ -483,7 +483,7 @@ function verifMarca(){
 function verifDetalles(){
     var final = true;
     let status = 'success';
-    let message = "Validación exitosa"
+    let message = "Validación de detalles exitosa"
     var detalles = document.getElementById('detalles').value;
     
     if(detalles.length == 0){
@@ -505,7 +505,7 @@ function verifDetalles(){
 function verifImagen(){
     var final = true;
     let status = 'success';
-    let message = "Validación exitosa"
+    let message = "Validación de URL de imagen exitosa"
     var imagen = document.getElementById('imagen').value;
     
     if(imagen.length == 0){
@@ -532,6 +532,8 @@ function mostrarBarraVerif(status, message){
 
 function verifFinal(edit){
     var final = true;
+    let status = 'success';
+    let message = "Validación de envio de formulario exitosa"
 
     for(var i=1; i<8; i++){
         switch(i){
@@ -575,10 +577,11 @@ function verifFinal(edit){
     }
 
     if(final == false){
-        let status = 'Error';
-        let message = "Validación de envio de formulario fallida"
-        mostrarBarraVerif(status, message);
+        status = 'error';
+        message = "Validación de envio de formulario fallida"
+        
     }
 
+    mostrarBarraVerif(status, message);
     return(final);
 }
