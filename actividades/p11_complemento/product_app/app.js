@@ -253,7 +253,6 @@ $(document).ready(function() {
 
     // VALIDAR NOMBRE
     $("#name").on("blur",function() {
-        let timer = setTimeout(verifNombre, 500);
         if(verifNombre(edit)){
             ocultarBarraEstado();
         }
@@ -303,7 +302,7 @@ $(document).ready(function() {
 });
 
 
-function verifNombre(edit){
+async function verifNombre(edit){
     var final = true;
     let status = 'success';
     let message = "Validación exitosa"
@@ -322,26 +321,27 @@ function verifNombre(edit){
         }
         else{
             if(edit == false){
-                $.ajax({
-                    type: "POST",
-                    url: "./backend/product-singleByName.php",  // ruta al archivo PHP
-                    data: { name: nombre },
-                    success: function(response) {
-                        let product = JSON.parse(response);
-                        if(product && product.length >0){
-                            status = "error";
-                            message = "El nombre ya está registrado";
-                            final = false;
-                        } 
-                    },
-                    error: function(xhr, status, error) {
-                        console.error("Error en la solicitud:", error);
-                        // Manejar el error en AJAX
-                        status = 'error';
-                        message = 'Error al verificar el nombre';
-                        final = false;
-                    }
-                });
+                try{
+                    $.ajax({
+                        type: "POST",
+                        url: "./backend/product-singleByName.php",  // ruta al archivo PHP
+                        data: { name: nombre },
+                        success: function(response) {
+                            let product = JSON.parse(response);
+                            if(product && product.length >0){
+                                status = "error";
+                                message = "El nombre ya está registrado";
+                                final = false;
+                            } 
+                        }
+                    });
+                } catch (error){
+                    console.error("Error en la solicitud:", error);
+                    // Manejar el error en AJAX
+                    status = 'error';
+                    message = 'Error al verificar el nombre';
+                    final = false;
+                }
             }
         }
     }
