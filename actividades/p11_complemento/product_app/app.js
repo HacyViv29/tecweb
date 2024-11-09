@@ -312,7 +312,7 @@ async function verifNombre(edit){
         status = 'error';
         message = 'El nombre es un requisito requerido.';
         final = false;
-    }
+    } 
     else{
         if(nombre.length > 100){
             status = 'error';
@@ -339,6 +339,10 @@ async function verifNombre(edit){
             }
         }
     }
+
+    console.log(status);
+    console.log(message);
+    console.log(final);
 
     if(final == false){
         mostrarBarraVerif(status, message);
