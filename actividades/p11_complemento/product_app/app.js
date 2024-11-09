@@ -574,5 +574,11 @@ function verifFinal(edit){
         }
     }
 
+    if(final == false){
+        let status = 'Error';
+        let message = "Validación de envio de formulario fallida"
+        mostrarBarraVerif(status, message);
+    }
+
     return(final);
 }
