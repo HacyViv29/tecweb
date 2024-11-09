@@ -253,60 +253,58 @@ $(document).ready(function() {
     });
 
     // VALIDAR NOMBRE
-    $("#name").keyup(function() {
+    $("#name").on("blur",function() {
         let name = document.getElementById('name');
-        $.post('./backend/product-singleByName.php', {name}, function(response){
-            const product = JSON.parse(response);
-            if(verifNombre(product)){
-                ocultarBarraEstado();
-            }
-        });
+        if(verifNombre()){
+            ocultarBarraEstado();
+        }
     });
 
     // VALIDAR PRECIO
-    $("#precio").keyup(function() {
+    $("#precio").on("blur", function() {
         if(verifPrecio()){
             ocultarBarraEstado();
         }
     });
 
     //VALIDAR UNIDADES
-    $("#unidades").keyup(function() {
+    $("#unidades").on("blur", function() {
         if(verifUnidades()){
             ocultarBarraEstado();
         }
     });
 
     // VALIDAR MODELO
-    $("#modelo").keyup(function() {
+    $("#modelo").on("blur",function() {
         if(verifModelo()){
             ocultarBarraEstado();
         }
     });
 
     //VALIDAR MARCA
-    $("#marca").keyup(function() {
+    $("#marca").on("blur",function() {
         if(verifMarca()){
             ocultarBarraEstado();
         }
     });
 
     //VALIDAR DETALLES
-    $("#detalles").keyup(function() {
+    $("#detalles").on("blur",function() {
         if(verifDetalles()){
             ocultarBarraEstado();
         }
     });
 
     //VALIDAR IMAGEN
-    $("#imagen").keyup(function() {
+    $("#imagen").on("blur",function() {
         if(verifImagen()){
             ocultarBarraEstado();
         }
     });
 });
 
-function verifNombre(jsonName){
+
+function verifNombre(){
     var final = true;
     let status = 'success';
     let message = "Validación exitosa"
@@ -324,11 +322,22 @@ function verifNombre(jsonName){
             final = false;
         }
         else{
-            if(Object.keys(jsonName).length > 0){
-                status = 'error';
-                message = 'El nombre no debe estar en la base de datos.';
-                final = false;
-            }
+            $.ajax({
+                type: "POST",
+                url: "./backend/product-singleByName.php",  // ruta al archivo PHP
+                data: { name: nombre },
+                dataType: "json",
+                success: function(data) {
+                    if (Array.isArray(data) && data.length > 0) {
+                        status = "error";
+                        message = "El nombre ya está registrado";
+                        final = false;
+                    } 
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error en la solicitud:", error);
+                }
+            });
         }
     }
 
@@ -339,24 +348,6 @@ function verifNombre(jsonName){
     return (final);
 }
 
-function verifNom(){
-    var final = true;
-    var nombre = document.getElementById('name');
-    
-    if(nombre.length == 0){
-        status = 'error';
-        message = 'El nombre es un requisito requerido.';
-        final = false;
-    }
-    else{
-        if(nombre.length > 100){
-            status = 'error';
-            message = 'El nombre debe de tener 100 caracteres o menos.';
-            final = false;
-        }
-    }
-    return final;
-}
 
 function verifPrecio(){
 var final = true;
@@ -535,27 +526,27 @@ function verifFinal(){
                         i = 8;
                     }
                     break;
-            case 2: final = verifMarca();
+            case 2: final = verifPrecio();
                     if(final == false){
                         i = 8;
                     }
                     break;
-            case 3: final = verifModelo();
+            case 3: final = verifUnidades();
                     if(final == false){
                         i = 8;
                     }
                     break;
-            case 4: final = verifPrecio();
+            case 4: final = verifModelo();
                     if(final == false){
                         i = 8;
                     }
                     break;
-            case 5: final = verifDetalles();
+            case 5: final = verifMarca();
                     if(final == false){
                         i = 8;
                     }
-                    break;
-            case 6: final = verifUnidades();
+                    break; 
+            case 6: final = verifDetalles();
                     if(final == false){
                         i = 8;
                     }
