@@ -322,19 +322,13 @@ async function verifNombre(edit){
         else{
             if(edit == false){
                 try{
-                    $.ajax({
-                        type: "POST",
-                        url: "./backend/product-singleByName.php",  // ruta al archivo PHP
-                        data: { name: nombre },
-                        success: function(response) {
-                            let product = JSON.parse(response);
-                            if(product && product.length >0){
-                                status = "error";
-                                message = "El nombre ya está registrado";
-                                final = false;
-                            } 
-                        }
-                    });
+                    // Esperamos la respuesta de la validación asincrónica
+                    const product = await verificarAsy(nombre);
+                    if (product && product.length > 0) {
+                        status = "error";
+                        message = "El nombre ya está registrado";
+                        final = false;
+                    }
                 } catch (error){
                     console.error("Error en la solicitud:", error);
                     // Manejar el error en AJAX
@@ -344,6 +338,23 @@ async function verifNombre(edit){
                 }
             }
         }
+    }
+
+    function verificarAsy(nombre) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: "POST",
+                url: "./backend/product-singleByName.php",  // ruta al archivo PHP
+                data: { name: nombre },
+                success: function(response) {
+                    let product = JSON.parse(response);
+                    resolve(product);  // Resolvemos la promesa con la respuesta
+                },
+                error: function(xhr, status, error) {
+                    reject(error);  // Rechazamos la promesa si hay un error
+                }
+            });
+        });
     }
 
     if(final == false){
