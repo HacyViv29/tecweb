@@ -522,7 +522,7 @@ function verifFinal(edit){
 
     for(var i=1; i<8; i++){
         switch(i){
-            case 1: final = verifNom(edit);
+            case 1: final = verifNombre(edit);
                     if(final == false){
                         i = 8;
                     }
