@@ -253,7 +253,7 @@ $(document).ready(function() {
 
     // VALIDAR NOMBRE
     $("#name").on("blur",function() {
-        cverifNombre(edit).then(function(isValid) {
+        verifNombre(edit).then(function(isValid) {
             if (isValid) {
                 ocultarBarraEstado();
             }
