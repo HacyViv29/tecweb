@@ -253,7 +253,7 @@ $(document).ready(function() {
 
     // VALIDAR NOMBRE
     $("#name").on("blur",function() {
-        let name = document.getElementById('name');
+        let timer = setTimeout(verifNombre, 500);
         if(verifNombre(edit)){
             ocultarBarraEstado();
         }
@@ -327,8 +327,8 @@ function verifNombre(edit){
                     url: "./backend/product-singleByName.php",  // ruta al archivo PHP
                     data: { name: nombre },
                     success: function(response) {
-                        const product = JSON.parse(response);
-                        if(product[0].nombre == nombre){
+                        let product = JSON.parse(response);
+                        if(product && product.length >0){
                             status = "error";
                             message = "El nombre ya está registrado";
                             final = false;
@@ -336,6 +336,10 @@ function verifNombre(edit){
                     },
                     error: function(xhr, status, error) {
                         console.error("Error en la solicitud:", error);
+                        // Manejar el error en AJAX
+                        status = 'error';
+                        message = 'Error al verificar el nombre';
+                        final = false;
                     }
                 });
             }
@@ -390,7 +394,7 @@ function verifUnidades(){
         final = false;
     }
     else{
-        if(aux < 99){
+        if(aux < 0){
             status = 'error';
             message = 'Las unidades deben ser mayor o igual a 0.';
             final = false;
