@@ -253,9 +253,11 @@ $(document).ready(function() {
 
     // VALIDAR NOMBRE
     $("#name").on("blur",function() {
-        if(verifNombre(edit)){
-            ocultarBarraEstado();
-        }
+        cverifNombre(edit).then(function(isValid) {
+            if (isValid) {
+                ocultarBarraEstado();
+            }
+        });
     });
 
     // VALIDAR PRECIO
