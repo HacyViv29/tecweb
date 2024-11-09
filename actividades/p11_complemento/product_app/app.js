@@ -8,6 +8,7 @@ function init() {
 
     // SE LISTAN TODOS LOS PRODUCTOS
     listarProductos();
+    resetForm();
 }
 
 function resetForm(){
@@ -17,7 +18,7 @@ function resetForm(){
     document.getElementById('modelo').value = '';
     document.getElementById('marca').value = '';
     document.getElementById('detalles').value = '';
-    document.getElementById('imagen').value = '';
+    document.getElementById('imagen').value = 'img/imagen.png';
 
     //var JsonString = JSON.stringify(baseJSON,null,2);
     //document.getElementById("description").value = JsonString;
@@ -117,7 +118,7 @@ $(document).ready(function() {
                             `;
                         });
                         // SE HACE VISIBLE LA BARRA DE ESTADO
-                        $('#product-result').removeClass('d-none');
+                        $('#product-result').className = "card my-4 d-block";
                         // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
                         $('#container').html(template_bar);  
                         // SE INSERTA LA PLANTILLA EN EL ELEMENTO CON ID "productos"
@@ -144,6 +145,7 @@ $(document).ready(function() {
         let marca = document.getElementById('marca').value;
         let detalles = document.getElementById('detalles').value;
         let imagen = document.getElementById('imagen').value;
+        let id = document.getElementById('productId').value;
     
         // CREAR UN OBJETO JSON
         let finalJSON = {
@@ -153,7 +155,8 @@ $(document).ready(function() {
             'modelo': modelo,
             'marca': marca,
             'detalles': detalles,
-            'imagen': imagen
+            'imagen': imagen,
+            'id': id
         };
         
         //Derterminar la URL del archivo PHP
@@ -175,7 +178,7 @@ $(document).ready(function() {
                         <li style="list-style: none;">message: ${respuesta.message}</li>
                     `;
                 
-                $('#product-result').removeClass('d-none');;
+                $('#product-result').className = "card my-4 d-block";
                 $('#container').html(template_bar);
                 
                 edit = false;  // Reiniciar el modo de edición
@@ -208,7 +211,7 @@ $(document).ready(function() {
                     `;
 
                     // SE HACE VISIBLE LA BARRA DE ESTADO
-                    $('#product-result').removeClass('d-none');
+                    $('#product-result').className = "card my-4 d-block";
                     // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
                     $('#container').html(template_bar);
                     
@@ -486,10 +489,15 @@ function verifDetalles(){
     let message = "Validación exitosa"
     var detalles = document.getElementById('detalles').value;
     
-    if (detalles.length > 250){
-        status = 'error';
-        message = 'Los detalles deben de tener 250 caracteres o menos.';
-        final = false;
+    if(detalles.length == 0){
+        document.getElementById('detalles').value = "S/D"
+    }
+    else{
+        if (detalles.length > 250){
+            status = 'error';
+            message = 'Los detalles deben de tener 250 caracteres o menos.';
+            final = false;
+        }
     }
 
     if(final == false){
