@@ -333,10 +333,6 @@ async function verifNombre(edit){
                         final = false;
                     }
                 } catch (error) {
-                    console.error("Error en la solicitud:", error);
-                    status = 'error';
-                    message = 'Error al verificar el nombre';
-                    final = false;
                 }
             }
         }

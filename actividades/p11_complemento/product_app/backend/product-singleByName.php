@@ -6,7 +6,7 @@
         $json = array();
 
         // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
-        $sql = "SELECT * FROM productos WHERE nombre = '{$nombre}'";
+        $sql = "SELECT * FROM productos WHERE nombre = '{$nombre}' and eliminado = 0";
         if ( $result = $conexion->query($sql) ) {
             // SE OBTIENEN LOS RESULTADOS
 			$rows = $result->fetch_all(MYSQLI_ASSOC);
