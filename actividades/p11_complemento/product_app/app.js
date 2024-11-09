@@ -531,7 +531,7 @@ function mostrarBarraVerif(status, message){
         <li style="list-style: none;">message: ${message}</li>
     `;
     // SE HACE VISIBLE LA BARRA DE ESTADO
-    document.getElementById("product-result").removeClass('d-none');
+    document.getElementById("product-result").className = "card my-4 d-block";
     // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
     document.getElementById("container").innerHTML = template_bar;
 }
