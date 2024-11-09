@@ -304,7 +304,7 @@ $(document).ready(function() {
 });
 
 
-function verifNombre(){
+function verifNombre(edit){
     var final = true;
     let status = 'success';
     let message = "Validación exitosa"
@@ -322,7 +322,7 @@ function verifNombre(){
             final = false;
         }
         else{
-            if(edit == true){
+            if(edit == false){
                 $.ajax({
                     type: "POST",
                     url: "./backend/product-singleByName.php",  // ruta al archivo PHP
