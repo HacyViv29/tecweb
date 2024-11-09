@@ -320,18 +320,18 @@ async function verifNombre(edit){
             final = false;
         }
         else{
-            if(edit == false){
-                try{
+            if (edit == false) {
+                try {
                     // Esperamos la respuesta de la validación asincrónica
                     const product = await verificarAsy(nombre);
+
                     if (product && product.length > 0) {
                         status = "error";
                         message = "El nombre ya está registrado";
                         final = false;
                     }
-                } catch (error){
+                } catch (error) {
                     console.error("Error en la solicitud:", error);
-                    // Manejar el error en AJAX
                     status = 'error';
                     message = 'Error al verificar el nombre';
                     final = false;
@@ -340,28 +340,33 @@ async function verifNombre(edit){
         }
     }
 
-    function verificarAsy(nombre) {
-        return new Promise((resolve, reject) => {
-            $.ajax({
-                type: "POST",
-                url: "./backend/product-singleByName.php",  // ruta al archivo PHP
-                data: { name: nombre },
-                success: function(response) {
-                    let product = JSON.parse(response);
-                    resolve(product);  // Resolvemos la promesa con la respuesta
-                },
-                error: function(xhr, status, error) {
-                    reject(error);  // Rechazamos la promesa si hay un error
-                }
-            });
-        });
-    }
-
     if(final == false){
         mostrarBarraVerif(status, message);
     }
 
     return (final);
+}
+
+function verificarAsy(nombre) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            type: "POST",
+            url: "./backend/product-singleByName.php",  // ruta al archivo PHP
+            data: { name: nombre },
+            success: function(response) {
+                console.log("Respuesta del servidor:", response); // Ver la respuesta antes de parsear
+                try {
+                    let product = JSON.parse(response);
+                    resolve(product);  // Resolvemos la promesa con la respuesta
+                } catch (e) {
+                    reject("Error al parsear la respuesta del servidor");
+                }
+            },
+            error: function(xhr, status, error) {
+                reject(error);  // Rechazamos la promesa si hay un error
+            }
+        });
+    });
 }
 
 
