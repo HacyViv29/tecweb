@@ -1,20 +1,11 @@
-// JSON BASE A MOSTRAR EN FORMULARIO
-var baseJSON = {
-    "precio": 0.0,
-    "unidades": 1,
-    "modelo": "XX-000",
-    "marca": "NA",
-    "detalles": "NA",
-    "imagen": "img/imagen.png"
-  };
 
 function init() {
     /**
      * Convierte el JSON a string para poder mostrarlo
      * ver: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/JSON
      */
-    var JsonString = JSON.stringify(baseJSON,null,2);
-    document.getElementById("description").value = JsonString;
+    //var JsonString = JSON.stringify(baseJSON,null,2);
+    //document.getElementById("description").value = JsonString;
 
     // SE LISTAN TODOS LOS PRODUCTOS
     listarProductos();
@@ -22,9 +13,15 @@ function init() {
 
 function resetForm(){
     document.getElementById('name').value = '';
+    document.getElementById('precio').value = '';
+    document.getElementById('unidades').value = '';
+    document.getElementById('modelo').value = '';
+    document.getElementById('marca').value = '';
+    document.getElementById('detalles').value = '';
+    document.getElementById('imagen').value = '';
 
-    var JsonString = JSON.stringify(baseJSON,null,2);
-    document.getElementById("description").value = JsonString;
+    //var JsonString = JSON.stringify(baseJSON,null,2);
+    //document.getElementById("description").value = JsonString;
 }
 
 function listarProductos(){
@@ -136,18 +133,29 @@ $(document).ready(function() {
     $('#product-form').submit(function(e){
         e.preventDefault();
         
+        if(!verifFinal()){
+            return;
+        }
+
         // SE OBTIENE DESDE EL FORMULARIO EL JSON A ENVIAR
-        let productoJsonString = $('#description').val();
+        let productoJsonString = $('#detalles').val();
     
         // SE CONVIERTE EL JSON DE STRING A OBJETO
         let finalJSON = JSON.parse(productoJsonString);
         
         // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
         finalJSON['nombre'] = document.getElementById('name').value;
+        finalJSON['precio'] = document.getElementById('precio').value;
+        finalJSON['unidades'] = document.getElementById('descripcion').value;
+        finalJSON['modelo'] = document.getElementById('modelo').value;
+        finalJSON['marca'] = document.getElementById('marca').value;
+        finalJSON['imagen'] = document.getElementById('imagen').value;
 
-        if(!verifJSON(finalJSON)){
+
+        if(!verifFinal()){
             return;
         }
+
         console.log()
         finalJSON['id'] = document.getElementById('productId').value;
         console.log(finalJSON)
@@ -227,165 +235,338 @@ $(document).ready(function() {
 
             $('#name').val(product[0].nombre);
             
-            let productWithoutNameAndId = {...product[0]};
-            delete productWithoutNameAndId.nombre;
-            delete productWithoutNameAndId.id;
-            delete productWithoutNameAndId.eliminado;
+            $('#precio').val(product[0].precio);
 
-            $('#description').val(JSON.stringify(productWithoutNameAndId, null, 4));
+            $('#unidades').val(product[0].unidades);
+
+            $('#modelo').val(product[0].modelo);
+
+            $('#marca').val(product[0].marca);
+
+            $('#detalles').val(product[0].detalles);
+
+            $('#imagen').val(product[0].imagen);
+
             edit = true;
             $('#product-form button[type="submit"]').text('Actualizar Producto');
         })
     });
 
+    // VALIDAR NOMBRE
+    $("#name").keyup(function() {
+        let name = document.getElementById('name');
+        $.post('./backend/product-singleByName.php', {name}, function(response){
+            const product = JSON.parse(response);
+            if(verifNombre(product)){
+                ocultarBarraEstado();
+            }
+        });
+    });
+
+    // VALIDAR PRECIO
+    $("#precio").keyup(function() {
+        if(verifPrecio()){
+            ocultarBarraEstado();
+        }
+    });
+
+    //VALIDAR UNIDADES
+    $("#unidades").keyup(function() {
+        if(verifUnidades()){
+            ocultarBarraEstado();
+        }
+    });
+
+    // VALIDAR MODELO
+    $("#modelo").keyup(function() {
+        if(verifModelo()){
+            ocultarBarraEstado();
+        }
+    });
+
+    //VALIDAR MARCA
+    $("#marca").keyup(function() {
+        if(verifMarca()){
+            ocultarBarraEstado();
+        }
+    });
+
+    //VALIDAR DETALLES
+    $("#detalles").keyup(function() {
+        if(verifDetalles()){
+            ocultarBarraEstado();
+        }
+    });
+
+    //VALIDAR IMAGEN
+    $("#imagen").keyup(function() {
+        if(verifImagen()){
+            ocultarBarraEstado();
+        }
+    });
 });
 
-function verifJSON(json){
+function verifNombre(jsonName){
     var final = true;
     let status = 'success';
     let message = "Validación exitosa"
+    var nombre = document.getElementById('name');
+    
+    if(nombre.length == 0){
+        status = 'error';
+        message = 'El nombre es un requisito requerido.';
+        final = false;
+    }
+    else{
+        if(nombre.length > 100){
+            status = 'error';
+            message = 'El nombre debe de tener 100 caracteres o menos.';
+            final = false;
+        }
+        else{
+            if(Object.keys(jsonName).length > 0){
+                status = 'error';
+                message = 'El nombre no debe estar en la base de datos.';
+                final = false;
+            }
+        }
+    }
+
+    if(final == false){
+        mostrarBarraVerif(status, message);
+    }
+
+    return (final);
+}
+
+function verifNom(){
+    var final = true;
+    var nombre = document.getElementById('name');
+    
+    if(nombre.length == 0){
+        status = 'error';
+        message = 'El nombre es un requisito requerido.';
+        final = false;
+    }
+    else{
+        if(nombre.length > 100){
+            status = 'error';
+            message = 'El nombre debe de tener 100 caracteres o menos.';
+            final = false;
+        }
+    }
+    return final;
+}
+
+function verifPrecio(){
+var final = true;
+let status = 'success';
+let message = "Validación exitosa"
+var precio = document.getElementById('precio');
+
+    if(precio.length == 0){
+        status = 'error';
+        message = 'El modelo es un requisito requerido.';
+        final = false;
+    }
+    else{
+        var aux = parseFloat(precio);
+        if(aux < 99.99){
+            status = 'error';
+            message = 'El precio debe de ser mayor a $ 99.99.';
+            final = false;
+        }
+    }
+    
+    if(final == false){
+        mostrarBarraVerif(status, message);
+    }
+
+    return (final);
+}
+
+function verifUnidades(){
+    var final = true;
+    let status = 'success';
+    let message = "Validación exitosa"
+    var unidades = document.getElementById('unidades');
+    var aux = parseInt(unidades);
+    
+    if(unidades.length == 0){
+        status = 'error';
+        message = 'Las unidades son un requisito requerido.';
+        final = false;
+    }
+    else{
+        if(aux < 99){
+            status = 'error';
+            message = 'Las unidades deben ser mayor o igual a 0.';
+            final = false;
+        }
+    }
+
+    if(final == false){
+        mostrarBarraVerif(status, message);
+    }
+
+    return (final);
+}
+
+function verifModelo(){
+    var final = true;
+    let status = 'success';
+    let message = "Validación exitosa"
+    var modelo = document.getElementById('modelo');
+    
+    if(modelo.length == 0){
+        status = 'error';
+        message = 'El modelo es un requisito requerido.';
+        final = false;
+    }
+    else{
+        if(!/^[A-Za-z0-9 ]+$/.test(modelo)){
+            status = 'error';
+            message = 'El modelo debe de estar escrito en formato alfanumerico.';
+            final = false;
+        }
+        else{
+            if(modelo.length > 25){
+                status = 'error';
+                message = 'El modelo debe de tener menos de 25 caracteres.';
+                final = false;
+            }
+        }
+    }
+
+    if(final == false){
+        mostrarBarraVerif(status, message);
+    }
+
+    return (final);
+}
+
+function verifMarca(){
+    var final = true;
+    let status = 'success';
+    let message = "Validación exitosa"
+    var marca = document.getElementById('marca');
+    let marcas = ["HP", "Asus", "Acer", "Huawei"];
+    
+    if(marca.length == 0){
+        status = 'error';
+        message = 'La marca es un requisito requerido.';
+        final = false;
+    }
+    else{
+        if(!marcas.includes(marca)){
+            status = 'error';
+            message = 'Elije una de las marcas predefinidas.';
+            final = false;
+        }
+    }
+
+    if(final == false){
+        mostrarBarraVerif(status, message);
+    }
+
+    return (final);
+}
+
+function verifDetalles(){
+    var final = true;
+    let status = 'success';
+    let message = "Validación exitosa"
+    var detalles = document.getElementById('detalles');
+    
+    if (detalles.length > 250){
+        status = 'error';
+        message = 'Los detalles deben de tener 250 caracteres o menos.';
+        final = false;
+    }
+
+    if(final == false){
+        mostrarBarraVerif(status, message);
+    }
+
+    return (final);
+}
+
+function verifImagen(){
+    var final = true;
+    let status = 'success';
+    let message = "Validación exitosa"
+    var imagen = document.getElementById('imagen');
+    
+    if(imagen.length == 0){
+        imagen = 'img/imagen.png';
+    }
+
+    if(final == false){
+        mostrarBarraVerif(status, message);
+    }
+
+    return (final);
+}
+
+function mostrarBarraVerif(status, message){
+    let template_bar = '';
+    template_bar += `
+        <li style="list-style: none;">status: ${status}</li>
+        <li style="list-style: none;">message: ${message}</li>
+    `;
+    // SE HACE VISIBLE LA BARRA DE ESTADO
+    document.getElementById("product-result").className = "card my-4 d-block";
+    // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
+    document.getElementById("container").innerHTML = template_bar;
+}
+
+function ocultarBarraEstado(){
+    // SE OCULTA LA BARRA DE ESTADO
+    document.getElementById("product-result").className = "d-none";
+}
+
+function verifFinal(){
+    var final = true;
+
     for(var i=1; i<8; i++){
         switch(i){
-            case 1: var nombre = json['nombre'];
-                    if(nombre.length == 0){
-                        status = 'error';
-                        message = 'El nombre es un requisito requerido.';
-                        final = false;
-                    }
-                    else{
-                        if(nombre.length > 100){
-                            status = 'error';
-                            message = 'El nombre debe de tener 100 caracteres o menos.';
-                            final = false;
-                        }
-                    }
-
+            case 1: final = verifNom();
                     if(final == false){
                         i = 8;
                     }
                     break;
-            case 2: var marca = json.marca;
-                    let marcas = ["HP", "Asus", "Acer", "Huawei"];
-                
-                    if(marca.length == 0){
-                        status = 'error';
-                        message = 'La marca es un requisito requerido.';
-                        final = false;
-                    }
-                    else{
-                        if(!marcas.includes(marca)){
-                            status = 'error';
-                            message = 'Elije una de las marcas predefinidas.';
-                            final = false;
-                        }
-                    }
-
+            case 2: final = verifMarca();
                     if(final == false){
                         i = 8;
                     }
                     break;
-            case 3: var modelo = json.modelo;
-
-                    if(modelo.length == 0){
-                        status = 'error';
-                        message = 'El modelo es un requisito requerido.';
-                        final = false;
-                    }
-                    else{
-                        if(!/^[A-Za-z0-9 ]+$/.test(modelo)){
-                            status = 'error';
-                            message = 'El modelo debe de estar escrito en formato alfanumerico.';
-                            final = false;
-                        }
-                        else{
-                            if(modelo.length > 25){
-                                status = 'error';
-                                message = 'El modelo debe de tener menos de 25 caracteres.';
-                                final = false;
-                            }
-                        }
-                    }
-
+            case 3: final = verifModelo();
                     if(final == false){
                         i = 8;
                     }
                     break;
-            case 4: var precio = json.precio;
-                    
-                    if(precio.length == 0){
-                        status = 'error';
-                        message = 'El modelo es un requisito requerido.';
-                        final = false;
-                    }
-                    else{
-                        var aux = parseFloat(precio);
-                        if(aux < 99.99){
-                            status = 'error';
-                            message = 'El precio debe de ser mayor a $ 99.99.';
-                            final = false;
-                        }
-                    }
-
+            case 4: final = verifPrecio();
                     if(final == false){
                         i = 8;
                     }
                     break;
-            case 5: var detalles = json.detalles;
-                    var final = true;
-                
-                    if (detalles.length > 250){
-                        status = 'error';
-                        message = 'Los detalles deben de tener 250 caracteres o menos.';
-                        final = false;
-                    }
-
+            case 5: final = verifDetalles();
                     if(final == false){
                         i = 8;
                     }
                     break;
-            case 6: var unidades = json.precio;
-                    var aux = parseInt(unidades);
-                    
-                    if(unidades.length == 0){
-                        status = 'error';
-                        message = 'Las unidades son un requisito requerido.';
-                        final = false;
-                    }
-                    else{
-                        if(aux < 0){
-                            status = 'error';
-                            message = 'El precio debe ser mayor o igual a 0.';
-                            final = false;
-                        }
-                    }
-
+            case 6: final = verifUnidades();
                     if(final == false){
                         i = 8;
                     }
                     break;
-            case 7: var imagen = json.imagen;
-
-                    if(imagen.length == 0){
-                        document.getElementById('form-imagen').value = 'img/imagen.png';
-                    }
-
+            case 7: final = verifImagen();
                     if(final == false){
                         i = 8;
                     }
                     break;
             default: final=false;
         }
-    }
-    if(final == false){
-        let template_bar = '';
-        template_bar += `
-            <li style="list-style: none;">status: ${status}</li>
-            <li style="list-style: none;">message: ${message}</li>
-        `;
-        // SE HACE VISIBLE LA BARRA DE ESTADO
-        document.getElementById("product-result").className = "card my-4 d-block";
-        // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
-        document.getElementById("container").innerHTML = template_bar;
     }
 
     return(final);
