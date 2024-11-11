@@ -164,7 +164,18 @@ $(document).ready(function(){
             const element = $(this)[0].activeElement.parentElement.parentElement;
             const id = $(element).attr('productId');
             $.post('./backend/product-delete.php', {id}, (response) => {
-                $('#product-result').hide();
+                // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
+                let respuesta = JSON.parse(response);
+                // SE CREA UNA PLANTILLA PARA CREAR INFORMACIÓN DE LA BARRA DE ESTADO
+                let template_bar = `
+                    <li>status: ${respuesta.status}</li>
+                    <li>message: ${respuesta.message}</li>
+                `;
+
+                // SE HACE VISIBLE LA BARRA DE ESTADO
+                $('#product-result').removeClass('d-none');
+                // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
+                $('#container').html(template_bar);
                 listarProductos();
             });
         }
