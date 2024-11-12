@@ -5,11 +5,11 @@
         <perfiles>
             <perfil>
                 <usuario>Haciel</usuario>
-                <contrasena>Buap123</contrasena>
+                <idioma>Español</idioma>
             </perfil>
             <perfil>
                 <usuario>Nidia</usuario>
-                <contrasena>1234</contrasena>
+                <idioma>Inglés</idioma>
             </perfil>
         </perfiles>
     </cuenta>
@@ -58,7 +58,7 @@
             <genero>
                 <nombre>Ciencia Ficción</nombre>
                 <titulo>
-                    <nombre>Black Mirrir</nombre>
+                    <nombre>Black Mirror</nombre>
                     <duracion>60 Minutos</duracion>
                 </titulo>
                 <titulo>

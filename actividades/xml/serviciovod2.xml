@@ -2,8 +2,8 @@
 <CatalogoVOD>
     <cuenta correo="ahaciel29@gmail.com">
         <perfiles>
-            <perfil contrasena="Buap123">Haciel</perfil>
-            <perfil contrasena="1234">Nidia</perfil>
+            <perfil idioma="Español">Haciel</perfil>
+            <perfil idioma="Ingles">Nidia</perfil>
         </perfiles>
     </cuenta>
     <contenido>
@@ -23,7 +23,7 @@
         </peliculas>
         <programas>
             <genero nombre="Ciencia Ficción">
-                <titulo duracion="60 Minutos">Black Mirrir</titulo>
+                <titulo duracion="60 Minutos">Black Mirror</titulo>
                 <titulo duracion="50 Minutos">Stranger Things</titulo>
                 <titulo duracion="40 Minutos">Westworld</titulo>
                 <titulo duracion="45 Minutos">The Expanse</titulo>
