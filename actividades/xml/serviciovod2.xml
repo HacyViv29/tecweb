@@ -2,37 +2,37 @@
 <CatalogoVOD>
     <cuenta correo="ahaciel29@gmail.com">
         <perfiles>
-            <perfil idioma="Español">Haciel</perfil>
-            <perfil idioma="Inglés">Nidia</perfil>
+            <perfil usuario="Haciel" idioma="Español"/>
+            <perfil usuario="Nidia" idioma="Inglés"/>
         </perfiles>
     </cuenta>
     <contenido>
         <peliculas>
             <genero nombre="Acción">
-                <titulo duracion="120 Minutos">Misión Imposible</titulo>
-                <titulo duracion="130 Minutos">John Wick</titulo>
-                <titulo duracion="110 Minutos">Duro de Matar</titulo>
-                <titulo duracion="100 Minutos">Gladiador</titulo>
+                <titulo nombre="Misión Imposible" duracion="120 Minutos"/>
+                <titulo nombre="John Wick" duracion="130 Minutos"/>
+                <titulo nombre="Duro de Matar" duracion="110 Minutos"/>
+                <titulo nombre="Gladiador" duracion="100 Minutos"/>
             </genero>
             <genero nombre="Comedia">
-                <titulo duracion="120 Minutos">La Máscara</titulo>
-                <titulo duracion="130 Minutos">Loco por Mary</titulo>
-                <titulo duracion="110 Minutos">El Profesor Chiflado</titulo>
-                <titulo duracion="100 Minutos">El Gordo y el Flaco</titulo>
+                <titulo nombre="La Máscara" duracion="120 Minutos"/>
+                <titulo nombre="Loco por Mary" duracion="130 Minutos"/>
+                <titulo nombre="El profesor Chiflado" duracion="110 Minutos"/>
+                <titulo nombre="El Gordo y el Flaco" duracion="100 Minutos"/>
             </genero>
         </peliculas>
         <programas>
             <genero nombre="Ciencia Ficción">
-                <titulo duracion="60 Minutos">Black Mirror</titulo>
-                <titulo duracion="50 Minutos">Stranger Things</titulo>
-                <titulo duracion="40 Minutos">Westworld</titulo>
-                <titulo duracion="45 Minutos">The Expanse</titulo>
+                <titulo nombre="Black Mirror" duracion="60 Minutos"/>
+                <titulo nombre="Stranger Things" duracion="50 Minutos"/>
+                <titulo nombre="Wesrworld" duracion="40 Minutos"/>
+                <titulo nombre="The Expanse" duracion="45 Minutos"/>
             </genero>
             <genero nombre="Documentales">
-                <titulo duracion="60 Minutos">Planeta Tierra</titulo>
-                <titulo duracion="50 Minutos">La Segunda Guerra Mundial</titulo>
-                <titulo duracion="40 Minutos">El Universo</titulo>
-                <titulo duracion="45 Minutos">La Historia de México</titulo>
+                <titulo nombre="Planeta Tierra" duracion="60 Minutos"/>
+                <titulo nombre="La Segunda Guerra Mundial" duracion="50 Minutos"/>
+                <titulo nombre="El Universo" duracion="40 Minutos"/>
+                <titulo nombre="La historia de México" duracion="45 Minutos"/>
             </genero>
         </programas>
     </contenido>
