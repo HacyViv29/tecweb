@@ -1,97 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CatalogoVOD>
-    <cuenta>
-        <correo>ahaciel29@gmail.com</correo>
+    <cuenta correo="ahaciel29@gmail.com">
         <perfiles>
-            <perfil>
-                <usuario>Haciel</usuario>
-                <contrasena>Buap123</contrasena>
-            </perfil>
-            <perfil>
-                <usuario>Nidia</usuario>
-                <contrasena>1234</contrasena>
-            </perfil>
+            <perfil contrasena="Buap123">Haciel</perfil>
+            <perfil contrasena="1234">Nidia</perfil>
         </perfiles>
     </cuenta>
     <contenido>
         <peliculas>
-            <genero>
+            <genero nombre="Acción">
                 <nombre>Acción</nombre>
-                <titulo>
-                    <nombre>Misión Imposible</nombre>
-                    <duracion>120 Minutos</duracion>
-                </titulo>
-                <titulo>
-                    <nombre>John Wick</nombre>
-                    <duracion>130 Minutos</duracion>
-                </titulo>
-                <titulo>
-                    <nombre>Duro de Matar</nombre>
-                    <duracion>110 Minutos</duracion>
-                </titulo>
-                <titulo>
-                    <nombre>Gladiador</nombre>
-                    <duracion>100 Minutos</duracion>
-                </titulo>
+                <titulo duracion="120 Minutos">Misión Imposible</titulo>
+                <titulo duracion="130 Minutos">John Wick</titulo>
+                <titulo duracion="110 Minutos">Duro de Matar</titulo>
+                <titulo duracion="100 Minutos">Gladiador</titulo>
             </genero>
-            <genero>
-                <nombre>Comedia</nombre>
-                <titulo>
-                    <nombre>La Máscara</nombre>
-                    <duracion>120 Minutos</duracion>
-                </titulo>
-                <titulo>
-                    <nombre>Loco por Mary</nombre>
-                    <duracion>130 Minutos</duracion>
-                </titulo>
-                <titulo>
-                    <nombre>El Profesor Chiflado</nombre>
-                    <duracion>110 Minutos</duracion>
-                </titulo>
-                <titulo>
-                    <nombre>El Gordo y el Flaco</nombre>
-                    <duracion>100 Minutos</duracion>
-                </titulo>
+            <genero nombre="Comedia">
+                <titulo duracion="120 Minutos">La Máscara</titulo>
+                <titulo duracion="130 Minutos">Loco por Mary</titulo>
+                <titulo duracion="110 Minutos">El Profesor Chiflado</titulo>
+                <titulo duracion="100 Minutos">El Gordo y el Flaco</titulo>
             </genero>
         </peliculas>
         <programas>
-            <genero>
-                <nombre>Ciencia Ficción</nombre>
-                <titulo>
-                    <nombre>Black Mirrir</nombre>
-                    <duracion>60 Minutos</duracion>
-                </titulo>
-                <titulo>
-                    <nombre>Stranger Things</nombre>
-                    <duracion>50 Minutos</duracion>
-                </titulo>
-                <titulo>
-                    <nombre>Westworld</nombre>
-                    <duracion>40 Minutos</duracion>
-                </titulo>
-                <titulo>
-                    <nombre>The Expanse</nombre>
-                    <duracion>45 Minutos</duracion>
-                </titulo>
+            <genero nombre="Ciencia Ficción">
+                <titulo duracion="60 Minutos">Black Mirrir</titulo>
+                <titulo duracion="50 Minutos">Stranger Things</titulo>
+                <titulo duracion="40 Minutos">Westworld</titulo>
+                <titulo duracion="45 Minutos">The Expanse</titulo>
             </genero>
-            <genero>
-                <nombre>Documentales</nombre>
-                <titulo>
-                    <nombre>Planeta Tierra</nombre>
-                    <duracion>60 Minutos</duracion>
-                </titulo>
-                <titulo>
-                    <nombre>La Segunda Guerra Mundial</nombre>
-                    <duracion>50 Minutos</duracion>
-                </titulo>
-                <titulo>
-                    <nombre>El Universo</nombre>
-                    <duracion>40 Minutos</duracion>
-                </titulo>
-                <titulo>
-                    <nombre>La Historia de México</nombre>
-                    <duracion>45 Minutos</duracion>
-                </titulo>
+            <genero nombre="Documentales">
+                <titulo duracion="60 Minutos">Planeta Tierra</titulo>
+                <titulo duracion="50 Minutos">La Segunda Guerra Mundial</titulo>
+                <titulo duracion="40 Minutos">El Universo</titulo>
+                <titulo duracion="45 Minutos">La Historia de México</titulo>
             </genero>
         </programas>
     </contenido>
