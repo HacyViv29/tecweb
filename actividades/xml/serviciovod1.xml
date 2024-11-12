@@ -1,1 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<CatalogoVOD>
+    <cuenta>
+        <correo>ahaciel29@gmail.com</correo>
+        <perfiles>
+            <perfil>
+                <usuario>Haciel</usuario>
+                <contrasena>Buap123</contrasena>
+            </perfil>
+            <perfil>
+                <usuario>Nidia</usuario>
+                <contrasena>1234</contrasena>
+            </perfil>
+        </perfiles>
+    </cuenta>
+    <contenido>
+        <peliculas>
+            <genero>
+                <nombre>Acción</nombre>
+                <titulo>
+                    <nombre>Misión Imposible</nombre>
+                    <duracion>120 Minutos</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>John Wick</nombre>
+                    <duracion>130 Minutos</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Duro de Matar</nombre>
+                    <duracion>110 Minutos</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Gladiador</nombre>
+                    <duracion>100 Minutos</duracion>
+                </titulo>
+            </genero>
+            <genero>
+                <nombre>Comedia</nombre>
+                <titulo>
+                    <nombre>La Máscara</nombre>
+                    <duracion>120 Minutos</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Loco por Mary</nombre>
+                    <duracion>130 Minutos</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>El Profesor Chiflado</nombre>
+                    <duracion>110 Minutos</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>El Gordo y el Flaco</nombre>
+                    <duracion>100 Minutos</duracion>
+                </titulo>
+            </genero>
+        </peliculas>
+        <programas>
+            <genero>
+                <nombre>Ciencia Ficción</nombre>
+                <titulo>
+                    <nombre>Black Mirrir</nombre>
+                    <duracion>60 Minutos</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Stranger Things</nombre>
+                    <duracion>50 Minutos</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Westworld</nombre>
+                    <duracion>40 Minutos</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>The Expanse</nombre>
+                    <duracion>45 Minutos</duracion>
+                </titulo>
+            </genero>
+            <genero>
+                <nombre>Documentales</nombre>
+                <titulo>
+                    <nombre>Planeta Tierra</nombre>
+                    <duracion>60 Minutos</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>La Segunda Guerra Mundial</nombre>
+                    <duracion>50 Minutos</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>El Universo</nombre>
+                    <duracion>40 Minutos</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>La Historia de México</nombre>
+                    <duracion>45 Minutos</duracion>
+                </titulo>
+            </genero>
+        </programas>
+    </contenido>
+</CatalogoVOD>
