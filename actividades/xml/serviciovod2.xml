@@ -9,7 +9,6 @@
     <contenido>
         <peliculas>
             <genero nombre="Acción">
-                <nombre>Acción</nombre>
                 <titulo duracion="120 Minutos">Misión Imposible</titulo>
                 <titulo duracion="130 Minutos">John Wick</titulo>
                 <titulo duracion="110 Minutos">Duro de Matar</titulo>
