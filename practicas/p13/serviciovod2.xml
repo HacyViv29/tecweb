@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CatalogoVOD SYSTEM "serviciovod.dtd">
 <CatalogoVOD>
     <cuenta correo="tony.stark@gmail.com">
         <perfiles>
-            <perfil usuerio="Robert Downey Jr." idioma="English"/>
-            <perfil usuerio="Chris Evans" idioma="English"/>
+            <perfil usuario="Robert Downey Jr." idioma="English"/>
+            <perfil usuario="Chris Evans" idioma="English"/>
         </perfiles>
     </cuenta>
     <contenido>
