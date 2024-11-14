@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cinefanatico SYSTEM "CINEFANATICO.dtd">
+<cinefanatico>
+    <tarjeta noserie="12345" visitas="1" puntos="7">
+        <nombre>Haciel</nombre>
+        <correo>correo@gmail.com</correo>
+    </tarjeta>
+    <tarjeta noserie="54321" visitas="3" puntos="15">
+        <nombre>Carlos</nombre>
+        <correo>carlos@correo.com</correo>
+        <telefono tipo="movil">2227895301</telefono>
+    </tarjeta>
+</cinefanatico>
