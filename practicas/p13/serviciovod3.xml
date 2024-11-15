@@ -12,9 +12,9 @@
                 <titulo duracion="02:04:00">Capitán América: El primer vengador.</titulo>
                 <titulo duracion="02:06:00">Iron Man: el hombre de hierro</titulo>
             </genero>
-            <genero nombre="Terror">
+            <genero nombre="Variables">
                 <titulo duracion="01:51:00">&lt;video id="11"&gt;&amp;lt;&lt;/video&gt;</titulo>
-                <titulo duracion="01:42:00">El telefono negro</titulo>
+                <titulo duracion="01:42:00"><![CDATA[<video id="11">&lt;</video>]]></titulo>
             </genero>
         </peliculas>
         <programas>
@@ -24,7 +24,7 @@
             </genero>
             <genero nombre="Drama Criminal">
                 <titulo duracion="0s0:45:00">Criminal Minds</titulo>
-                <titulo duracion="00:50:00"><![CDATA[ <video id="11">&lt;</video> ]]></titulo>
+                <titulo duracion="00:50:00">Dahmer</titulo>
             </genero>
         </programas>
     </contenido>
