@@ -26,8 +26,9 @@ elementFormDefault="qualified">
         <xs:sequence>
             <xs:element name="Cuenta" type="CuentaType" maxOccurs="unbounded" />
         </xs:sequence>
+        <xs:attribute name="version" type="xs:string" use="required"/>
     </xs:complexType>
 
     <xs:element name="Spotify" type="SpotifyType" />
-    
+
 </xs:schema>
