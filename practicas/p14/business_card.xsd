@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:b="http://businesscard.org"
+    targetNamespace="http://businesscard.org">
+    
+    <xsd:element name="card" type="b:card_type"/>
+    <xsd:element name="name" type="xsd:string"/>
+    <xsd:element name="title" type="xsd:string"/>
+    <xsd:element name="email" type="xsd:string"/>
+    <xsd:element name="phone" type="xsd:string"/>
+    <xsd:element name="logo" type="b:logo_type"/>
+    
+    <xsd:attribute name="uri" type="xsd:anyURI"/>
+    
+    <xsd:complexType name="card_type">
+        <xsd:sequence>
+            <xsd:element ref="b:name"/>
+            <xsd:element ref="b:title"/>
+            <xsd:element ref="b:email"/>
+            <xsd:element ref="b:phone" minOccurs="0"/>
+            <xsd:element ref="b:logo" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="logo_type">
+        <xsd:attribute ref="b:uri" use="required"/>
+    </xsd:complexType>
+    
+</xsd:schema>
