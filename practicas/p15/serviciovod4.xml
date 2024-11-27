@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CatalogoVOD>
+
+<CatalogoVOD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="serviciovod_ep.xsd">
     <cuenta correo="hacyviv29@gmail.com">
         <perfiles>
             <perfil usuario="Hacy" idioma="Inglés"/>
