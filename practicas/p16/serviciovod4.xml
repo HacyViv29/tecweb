@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="catalogovod.xsl"?>
+
+<CatalogoVOD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="serviciovod_ep.xsd">
+    <cuenta correo="hacyviv29@gmail.com">
+        <perfiles>
+            <perfil usuario="Hacy" idioma="Inglés"/>
+            <perfil usuario="Sher" idioma="Español"/>
+        </perfiles>
+    </cuenta>
+    <contenido>
+        <peliculas region="USA">
+            <genero nombre="Ciencia Ficción">
+                <titulo duracion="01:56:00">Volver al Futuro.</titulo>
+                <titulo duracion="01:46:00">El proyecto Adam.</titulo>
+            </genero>
+            <genero nombre="Espias">
+                <titulo duracion="02:09:00">Kingsman: El servicio secreto</titulo>
+                <titulo duracion="02:19:00">Argylle: Agente secreto</titulo>
+            </genero>
+        </peliculas>
+        <series region="USA">
+            <genero nombre="Drama">
+                <titulo duracion="00:44:00">Dr. House</titulo>
+                <titulo duracion="00:48:00">Breaking Bad</titulo>
+            </genero>
+            <genero nombre="Super Heroes">
+                <titulo duracion="00:50:00">Loki</titulo>
+                <titulo duracion="00:22:00">Spectacular Spider-Man</titulo>
+            </genero>
+        </series>
+    </contenido>
+</CatalogoVOD>
