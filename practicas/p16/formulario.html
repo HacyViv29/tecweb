@@ -4,8 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Contenido al Catálogo VOD</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #aeccdb;
+            margin: 0px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            background-color: #bfc4c5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            margin-bottom: 15px;
+            padding: 8px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            display: block;
+            margin: 0 auto;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    
+    <h1>Agregar contenido al Catálogo VOD</h1>
+    <form action="serviciovod_add.php" method="POST">
+        <h2>Nuevo Perfil</h2>
+        <label for="usuario">Nombre de usuario:</label>
+        <input type="text" id="usuario" name="usuario" required><br><br>
+        
+        <label for="idioma">Idioma:</label>
+        <input type="text" id="idioma" name="idioma" required><br><br>
+
+        <h2>Nuevo Género en Películas</h2>
+        <label for="genero_pelicula">Nombre del género:</label>
+        <input type="text" id="genero_pelicula" name="genero_pelicula" required><br><br>
+
+        <label for="titulo_pelicula1">Título 1:</label>
+        <input type="text" id="titulo_pelicula1" name="titulo_pelicula1" required>
+        <label for="duracion_pelicula1">Duración:</label>
+        <input type="text" id="duracion_pelicula1" name="duracion_pelicula1" required><br><br>
+
+        <label for="titulo_pelicula2">Título 2:</label>
+        <input type="text" id="titulo_pelicula2" name="titulo_pelicula2" required>
+        <label for="duracion_pelicula2">Duración:</label>
+        <input type="text" id="duracion_pelicula2" name="duracion_pelicula2" required><br><br>
+
+        <h2>Nuevo Género en Series</h2>
+        <label for="genero_serie">Nombre del género:</label>
+        <input type="text" id="genero_serie" name="genero_serie" required><br><br>
+
+        <label for="titulo_serie1">Título 1:</label>
+        <input type="text" id="titulo_serie1" name="titulo_serie1" required>
+        <label for="duracion_serie1">Duración:</label>
+        <input type="text" id="duracion_serie1" name="duracion_serie1" required><br><br>
+
+        <label for="titulo_serie2">Título 2:</label>
+        <input type="text" id="titulo_serie2" name="titulo_serie2" required>
+        <label for="duracion_serie2">Duración:</label>
+        <input type="text" id="duracion_serie2" name="duracion_serie2" required><br><br>
+
+        <input type="submit" value="Agregar al catálogo">
+    </form>
 </body>
 </html>
